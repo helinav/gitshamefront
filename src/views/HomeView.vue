@@ -27,6 +27,5 @@
 
 export default {
   name: 'HomeView',
-  methods: {}
 }
 </script>
