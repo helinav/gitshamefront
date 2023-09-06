@@ -24,4 +24,3 @@ app.use(VueAxios, axios)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.mount('#app')
-
