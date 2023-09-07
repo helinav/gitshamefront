@@ -1,12 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CreateAccountView from "@/views/CreateAccountView.vue";
+import MainMenuView from "@/views/MainMenuView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 const routes = [
   {
     path: '/',
     name: 'homeRoute',
     component: HomeView
+  },
+  {
+    path: '/error',
+    name: 'errorRoute',
+    component: ErrorView
   },
   {
     path: '/login',
@@ -20,6 +27,11 @@ const routes = [
     name: 'createAccountRoute',
     component: CreateAccountView
 
+  },
+  {
+    path: '/mainMenu',
+    name: 'mainMenu',
+    component: MainMenuView
   }
 ]
 
