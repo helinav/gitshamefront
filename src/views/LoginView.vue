@@ -5,6 +5,7 @@
     </div>
     <div class="justify-content-center mt-5">
       <button @click="openLoginModal" type="button" class="btn btn-primary">Logi sisse</button>
+      <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-5">
       <button @click="$router.push({name: 'createAccountRoute'})" type="button" class="btn btn-primary">Loo uus konto</button>
@@ -13,15 +14,27 @@
 </template>
 
 <script>
-export default {
-  data() {
 
+
+import LoginModal from "@/components/modal/LoginModal.vue";
+export default {
+  components:{
+    LoginModal
+  },
+  data() {
+    return{
+
+    }
   },
   methods: {
 
     openLoginModal() {
-
+      this.$refs.loginModalRef.openLoginModal()
     },
+
+    closeLoginModal () {
+      this.$refs.loginModalRef.closeLoginModal()
+    }
 
   }
 }
