@@ -13,5 +13,13 @@
 </template>
 
 <script>
+export default {
+  methods: {
 
+    openLoginModal() {
+
+    },
+
+  }
+}
 </script>
