@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-dialog modal-dialog-centered">
+  <div v-if="isOpen" class="modal-dialog modal-dialog-centered">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,8 +10,8 @@
           <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeLoginModal">Tagasi</button>
+          <button type="button" class="btn btn-primary" @click="closeLoginModal">Logi sisse</button>
         </div>
       </div>
     </div>
@@ -20,12 +20,21 @@
 
 
 <script>
+export default {
+  name: 'LoginModal',
+  data() {
+    return {
+      isOpen: false
+    }
+  },
 
-
-
+  methods: {
+    openLoginModal() {
+      this.isOpen = true
+    },
+    closeLoginModal() {
+      this.isOpen = false
+    },
+  }
+}
 </script>
-
-
-<style>
-
-</style>

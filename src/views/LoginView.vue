@@ -4,7 +4,7 @@
       <img src="../assets/pictures/avaleht_GITBLAME.png" width="900" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="" type="button" class="btn btn-primary">Logi sisse</button>
+      <button @click="openLoginModal" type="button" class="btn btn-primary">Logi sisse</button>
     </div>
     <div class="justify-content-center mt-5">
       <button @click="$router.push({name: 'createAccountRoute'})" type="button" class="btn btn-primary">Loo uus konto</button>
@@ -14,6 +14,9 @@
 
 <script>
 export default {
+  data() {
+
+  },
   methods: {
 
     openLoginModal() {
