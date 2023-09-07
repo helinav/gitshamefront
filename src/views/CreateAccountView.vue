@@ -7,7 +7,7 @@
       <h3>Loo uus kasutaja</h3>
     </div>
     <form>
-      <div class="mb-3" >
+      <div class="mb-3">
         <label for="exampleInputUsername" class="form-label">Kasutajanimi</label>
         <input type="text" class="form-control" placeholder="Kasutajanimi" aria-label="Username"
                aria-describedby="basic-addon1">
@@ -26,10 +26,12 @@
     </form>
     <div class="mb-3">
       <label class="form-label">Vali pilt</label>
-      <img src="../assets/pictures/neo.png" height="150" width="150" alt="Neo"/>
-      <img src="../assets/pictures/mrrobot.png" height="150" width="150" alt="Mr Robot"/>
-      <img src="../assets/pictures/sandra.png" height="150" width="150" alt="Sandra"/>
-      <img src="../assets/pictures/hacker.png" height="150" width="150" alt="Hacker"/>
+      <img src="../assets/pictures/avatar1_hacker.png" width="150" alt="Avatar 1"/>
+      <img src="../assets/pictures/avatar2_neo.png" width="150" alt="Avatar 2"/>
+      <img src="../assets/pictures/avatar3_hannes.png" width="150" alt="Avatar 3"/>
+      <img src="../assets/pictures/avatar4_mrrobot.png" width="150" alt="Avatar 4"/>
+      <img src="../assets/pictures/avatar5_bender.png" width="150" alt="Avatar 5"/>
+      <img src="../assets/pictures/avatar6_sandra.png" width="150" alt="Avatar 6"/>
     </div>
     <button type="submit" class="btn btn-primary">Loo uus kasutaja</button>
 
