@@ -4,11 +4,11 @@
       <img src="../assets/pictures/avaleht_GITBLAME.png" width="900" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="openLoginModal" type="button" class="btn btn-primary">Logi sisse</button>
+      <button @click="openLoginModal" type="button" class="btn btn-outline-success">Logi sisse</button>
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="$router.push({name: 'createAccountRoute'})" type="button" class="btn btn-primary">Loo uus konto</button>
+      <button @click="$router.push({name: 'createAccountRoute'})" type="button" class="btn btn-outline-success">Loo uus konto</button>
     </div>
   </div>
 </template>
