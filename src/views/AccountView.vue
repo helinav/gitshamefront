@@ -33,13 +33,22 @@
       <img src="../assets/pictures/avatar5_bender.png" width="150" alt="Avatar 5"/>
       <img src="../assets/pictures/avatar6_sandra.png" width="150" alt="Avatar 6"/>
     </div>
-    <button type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
-
-
+    <button @click="navigateToPlayView" type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
   </div>
 </template>
 
 <script>
+
+import router from "@/router";
+
+export  default {
+  methods: {
+    navigateToPlayView(){
+      router.push({name: 'playRoute'})
+    }
+
+  }
+}
 
 </script>
 

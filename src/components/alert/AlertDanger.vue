@@ -1,5 +1,5 @@
 <template>
-  <div v-show="alertMessage != null && alertMessage.length > 0" class="alert alert-danger" role="alert">
+  <div v-if="alertMessage != null && alertMessage.length > 0" class="alert alert-danger" role="alert">
     {{ alertMessage }}
   </div>
 </template>

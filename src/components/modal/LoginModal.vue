@@ -8,6 +8,7 @@
         <div class="container text-center">
           <div class="row">
             <div class="col">
+              <AlertDanger :alert-message="errorResponse.message"/>
               <div class="mb-3">
                 <label for="username" class="form-label">Kasutajanimi</label>
                 <input v-model="username" type="text" class="form-control" id="username">
@@ -24,7 +25,6 @@
         <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
       </template>
     </Modal>
-    <AlertDanger :alert-message="errorResponse.message"/>
   </div>
 </template>
 
@@ -36,9 +36,10 @@ import {INCORRECT_CREDENTIALS} from "@/assets/script/ErrorCode";
 import {FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 
+
 export default {
   name: 'LoginModal',
-  components: {Modal, AlertDanger},
+  components: {AlertDanger, Modal},
   data() {
     return {
       isOpen: false,
@@ -74,7 +75,6 @@ export default {
       return this.username.length > 0 && this.password.length > 0
     },
 
-
     sendLoginRequest() {
       this.$http.get("/login", {
             params: {
@@ -95,8 +95,6 @@ export default {
         }
       })
     },
-
   },
-
 }
 </script>
