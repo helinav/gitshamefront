@@ -4,11 +4,11 @@
       <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="openLoginModal" type="button" class="btn btn-outline-success">Logi sisse</button>
+      <button @click="openModal()" type="button" class="btn btn-outline-success">Logi sisse</button>
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="$router.push({name: 'createAccountRoute'})" type="button" class="btn btn-outline-success">Loo uus konto</button>
+      <button @click="$router.push({name: 'accountRoute'})" type="button" class="btn btn-outline-success">Loo uus konto</button>
     </div>
   </div>
 </template>
@@ -21,19 +21,14 @@ export default {
   components:{
     LoginModal
   },
-  data() {
-    return{
-
-    }
-  },
   methods: {
 
-    openLoginModal() {
-      this.$refs.loginModalRef.openLoginModal()
+    openModal() {
+      this.$refs.loginModalRef.$refs.modalRef.openModal()
     },
 
-    closeLoginModal () {
-      this.$refs.loginModalRef.closeLoginModal()
+    closeModal () {
+      this.$refs.loginModalRef.$refs.modalRef.closeModal()
     }
 
   }

@@ -1,40 +1,102 @@
 <template>
-  <div v-if="isOpen" class="modal-dialog modal-dialog-centered">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div>
+    <Modal close-button-name="Tagasi" ref="modalRef">
+      <template #header>
+        <h3>Logi sisse</h3>
+      </template>
+      <template #body>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="username" class="form-label">Kasutajanimi</label>
+                <input v-model="username" type="text" class="form-control" id="username">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Parool</label>
+                <input v-model="password" type="password" class="form-control" id="password">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeLoginModal">Tagasi</button>
-          <button type="button" class="btn btn-primary" @click="closeLoginModal">Logi sisse</button>
-        </div>
-      </div>
-    </div>
+      </template>
+      <template #footer>
+        <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
+      </template>
+    </Modal>
   </div>
 </template>
 
 
 <script>
+import Modal from "@/components/modal/Modal.vue";
+import router from "@/router";
+import {INCORRECT_CREDENTIALS} from "@/assets/script/ErrorCode";
+import {FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
+
 export default {
   name: 'LoginModal',
+  components: {Modal},
   data() {
     return {
-      isOpen: false
+      isOpen: false,
+      username: '',
+      password: '',
+      loginResponse: {
+        userId: 0,
+        roleName: ''
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
+      },
     }
   },
 
   methods: {
-    openLoginModal() {
+    openModal() {
       this.isOpen = true
     },
-    closeLoginModal() {
-      this.isOpen = false
+
+    login() {
+      this.resetErrorMessage()
+
+      if (this.mandatoryFieldsAreFilled()) {
+        this.sendLoginRequest()
+      } else {
+        this.errorResponse.message = FILL_MANDATORY_FIELDS
+      }
     },
-  }
+
+    resetErrorMessage() {
+      this.errorResponse.message = ''
+    },
+
+    mandatoryFieldsAreFilled() {
+      return this.username.length > 0 && this.password.length > 0
+    },
+
+    sendLoginRequest() {
+      this.$http.get("/login", {
+            params: {
+              username: this.username,
+              password: this.password
+            }
+          }
+      ).then(response => {
+        this.loginResponse = response.data
+        sessionStorage.setItem('userId', this.loginResponse.userId)
+        sessionStorage.setItem('roleName', this.loginResponse.roleName)
+        this.$refs.modalRef.closeModal()
+        router.push({name: 'playRoute'})
+      }).catch(error => {
+        this.errorResponse = error.response.data
+        if (this.errorResponse.errorCode !== INCORRECT_CREDENTIALS) {
+          router.push({name: 'errorRoute'})
+        }
+      })
+    },
+  },
+
 }
 </script>

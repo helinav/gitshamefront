@@ -107,7 +107,7 @@ green-button {
 
 /* Kui modaal on nähtav, rakenda järgmised stiilid */
 .modal.fade.show.d-block {
-    background-color: rgba(206, 59, 59, 0.8); /* Tausta värv koos läbipaistvusega */
+    background-color: rgb(35, 35, 35); /* Tausta värv koos läbipaistvusega */
     position: fixed; /* Positsiooni tüüp on fikseeritud */
     z-index: 1050; /* Z-indeks määrab modaalakna kihi järjekorra */
     left: 0; /* Vasak paigutus on null */
