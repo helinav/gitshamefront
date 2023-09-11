@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CreateAccountView from "@/views/CreateAccountView.vue";
-import MainMenuView from "@/views/MainMenuView.vue";
+import CreateAccountView from "@/views/AccountView.vue";
+import PlayView from "@/views/PlayView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 
 const routes = [
@@ -23,15 +23,14 @@ const routes = [
     }
   },
   {
-    path: '/createAccount',
-    name: 'createAccountRoute',
+    path: '/account',
+    name: 'accountRoute',
     component: CreateAccountView
-
   },
   {
-    path: '/mainMenu',
-    name: 'mainMenu',
-    component: MainMenuView
+    path: '/play',
+    name: '/play',
+    component: PlayView
   }
 ]
 

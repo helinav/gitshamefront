@@ -1,27 +1,29 @@
 <template>
-  <div class="modal-dialog modal-dialog-centered">
-    <div>
-      <Modal close-button-name="Tagasi" ref="modalRef">
-
-        <template #header>
-          Sisse logimine
-        </template>
-
-        <template #body>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Kasutajanimi" aria-label="Username"
-                   aria-describedby="basic-addon1">
+  <div>
+    <Modal close-button-name="Tagasi" ref="modalRef">
+      <template #header>
+        <h3>Logi sisse</h3>
+      </template>
+      <template #body>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="username" class="form-label">Kasutajanimi</label>
+                <input v-model="username" type="text" class="form-control" id="username">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Parool</label>
+                <input v-model="password" type="password" class="form-control" id="password">
+              </div>
+            </div>
           </div>
-          <div>
-            <input type="password" class="form-control" placeholder="Parool">
-          </div>
-        </template>
-
-        <template #footer>
-          <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
-        </template>
-      </Modal>
-    </div>
+        </div>
+      </template>
+      <template #footer>
+        <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -29,13 +31,15 @@
 <script>
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
-import {INCORRECT_CREDENTIALS} from "@/assets/ErrorCode";
+import {INCORRECT_CREDENTIALS} from "@/assets/script/ErrorCode";
+import {FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
 
 export default {
   name: 'LoginModal',
   components: {Modal},
   data() {
     return {
+      isOpen: false,
       username: '',
       password: '',
       loginResponse: {
@@ -50,27 +54,49 @@ export default {
   },
 
   methods: {
-
-      sendLoginRequest() {
-        this.$http.get("/login", {
-              params: {
-                username: this.username,
-                password: this.password
-              }
-            }
-        ).then(response => {
-          this.loginResponse = response.data
-          sessionStorage.setItem('userId', this.loginResponse.userId)
-          sessionStorage.setItem('roleName', this.loginResponse.roleName)
-          router.push({name: 'mainMenuRoute'})
-        }).catch(error => {
-          this.errorResponse = error.response.data
-          if (this.errorResponse.errorCode !== INCORRECT_CREDENTIALS) {
-            router.push({name: 'errorRoute'})
-          }
-        })
-      },
+    openModal() {
+      this.isOpen = true
     },
+
+    login() {
+      this.resetErrorMessage()
+
+      if (this.mandatoryFieldsAreFilled()) {
+        this.sendLoginRequest()
+      } else {
+        this.errorResponse.message = FILL_MANDATORY_FIELDS
+      }
+    },
+
+    resetErrorMessage() {
+      this.errorResponse.message = ''
+    },
+
+    mandatoryFieldsAreFilled() {
+      return this.username.length > 0 && this.password.length > 0
+    },
+
+    sendLoginRequest() {
+      this.$http.get("/login", {
+            params: {
+              username: this.username,
+              password: this.password
+            }
+          }
+      ).then(response => {
+        this.loginResponse = response.data
+        sessionStorage.setItem('userId', this.loginResponse.userId)
+        sessionStorage.setItem('roleName', this.loginResponse.roleName)
+        this.$refs.modalRef.closeModal()
+        router.push({name: 'playRoute'})
+      }).catch(error => {
+        this.errorResponse = error.response.data
+        if (this.errorResponse.errorCode !== INCORRECT_CREDENTIALS) {
+          router.push({name: 'errorRoute'})
+        }
+      })
+    },
+  },
 
 }
 </script>

@@ -1,3 +1,102 @@
+/* Gistshame default fondid, fontide suursed ja värvid */
+
+.page-container {
+    width: 700px; /* Set your desired width in pixels */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+body {
+    background-color: #232323;
+    font-family: 'DefaultFont', Iosevka, sans-serif;
+}
+
+/* Style for heading elements (h1, h2, etc.) */
+h1 {
+    color: #19eb81; /* Roheline */
+    font-family: Iosevka, sans-serif;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #0378e2; /* Sinine */
+    font-family: Iosevka, sans-serif;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+h3 {
+    color: #f72f35; /* punane */
+    font-family: Iosevka, sans-serif;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+/* Paragraph styles */
+p {
+    font-family: 'ParagraphFont', Iosevka, sans-serif;
+    color: #FFFFFF; /* Valge */
+    font-size: 15px;
+    line-height: 10px;
+}
+
+.paragraph-2 {
+    font-family: Iosevka, sans-serif;
+    color: #3466c0;
+    font-size: 15px;
+    line-height: 10px;
+}
+
+/* Button styles */
+button {
+    font-family: 'ButtonFont', Iosevka;
+    font-size: 16px;
+    background-color: #007bff; /* Change background color as needed */
+    color: #fff; /* Change text color as needed */
+    /* Other button styles */
+}
+
+green-button {
+    font-family: Iosevka, sans-serif;
+    border-radius: 0; /* Remove rounded corners */
+    background-color: #19eb81; /* Change the button color to your desired color */
+    color: #333; /* Set text color to white or any other color that suits the background */
+}
+
+.emptyspace { padding-bottom: 20px; /* Adds 10px space at the bottom of the paragraph */
+}
+
+
+/* Style for the image link */
+.image-link {
+    text-decoration: none; /* Remove underline on hover (optional) */
+    position: relative; /* Required for pseudo-elements */
+
+    /* Transition for smooth hover effect */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Hover effect for the image link */
+.image-link:hover {
+    transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
+}
+
+
+
+
+
+
+/* Additional styles */
+.my-custom-class {
+    /* Define styles for elements with class "my-custom-class" */
+}
+
+.hoverable-link {
+    cursor: pointer;
+}
+
 .image-size{
     width: 75%;
 }
@@ -8,7 +107,7 @@
 
 /* Kui modaal on nähtav, rakenda järgmised stiilid */
 .modal.fade.show.d-block {
-    background-color: rgb(255, 255, 255); /* Tausta värv koos läbipaistvusega */
+    background-color: rgb(35, 35, 35); /* Tausta värv koos läbipaistvusega */
     position: fixed; /* Positsiooni tüüp on fikseeritud */
     z-index: 1050; /* Z-indeks määrab modaalakna kihi järjekorra */
     left: 0; /* Vasak paigutus on null */
@@ -25,3 +124,5 @@
     left: 50%; /* Vasak paigutus on 50% */
     transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
 }
+
+
