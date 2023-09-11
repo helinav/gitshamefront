@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center vh-100">
-    <div class="justify-content-center mb-5">
-      <img src="../assets/pictures/avaleht_GITBLAME.png" width="900" alt="Logo"/>
+    <div>
+      <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
       <button @click="openLoginModal" type="button" class="btn btn-outline-success">Logi sisse</button>

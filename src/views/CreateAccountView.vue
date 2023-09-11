@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center vh-100">
     <div>
-      <img src="../assets/pictures/avaleht_GITBLAME.png" width="900" alt="Logo"/>
+      <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
     </div>
     <div>
       <h3>Loo uus kasutaja</h3>
@@ -42,3 +42,4 @@
 <script>
 
 </script>
+
