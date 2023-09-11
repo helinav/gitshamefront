@@ -24,6 +24,7 @@
         <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
       </template>
     </Modal>
+    <AlertDanger :alert-message="errorResponse.message"/>
   </div>
 </template>
 
@@ -33,10 +34,11 @@ import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
 import {INCORRECT_CREDENTIALS} from "@/assets/script/ErrorCode";
 import {FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
 
 export default {
   name: 'LoginModal',
-  components: {Modal},
+  components: {Modal, AlertDanger},
   data() {
     return {
       isOpen: false,
@@ -54,13 +56,9 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.isOpen = true
-    },
 
     login() {
       this.resetErrorMessage()
-
       if (this.mandatoryFieldsAreFilled()) {
         this.sendLoginRequest()
       } else {
@@ -75,6 +73,7 @@ export default {
     mandatoryFieldsAreFilled() {
       return this.username.length > 0 && this.password.length > 0
     },
+
 
     sendLoginRequest() {
       this.$http.get("/login", {
@@ -92,10 +91,11 @@ export default {
       }).catch(error => {
         this.errorResponse = error.response.data
         if (this.errorResponse.errorCode !== INCORRECT_CREDENTIALS) {
-          router.push({name: 'errorRoute'})
+        router.push({name: 'errorRoute'})
         }
       })
     },
+
   },
 
 }

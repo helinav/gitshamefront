@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CreateAccountView from "@/views/AccountView.vue";
+import AccountView from "@/views/AccountView.vue";
 import PlayView from "@/views/PlayView.vue";
 import ErrorView from "@/views/ErrorView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const routes = [
   {
@@ -18,18 +19,16 @@ const routes = [
   {
     path: '/login',
     name: 'loginRoute',
-    component() {
-      return import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
-    }
+    component: LoginView
   },
   {
     path: '/account',
     name: 'accountRoute',
-    component: CreateAccountView
+    component: AccountView
   },
   {
     path: '/play',
-    name: '/play',
+    name: 'playRoute',
     component: PlayView
   }
 ]

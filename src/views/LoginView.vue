@@ -8,7 +8,7 @@
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="$router.push({name: 'accountRoute'})" type="button" class="btn btn-outline-success">Loo uus konto</button>
+      <button @click="navigateToAccountView" type="button" class="btn btn-outline-success">Loo uus konto</button>
     </div>
   </div>
 </template>
@@ -17,11 +17,15 @@
 
 
 import LoginModal from "@/components/modal/LoginModal.vue";
+import router from "@/router";
 export default {
   components:{
     LoginModal
   },
   methods: {
+    navigateToAccountView() {
+      router.push({name: 'accountRoute'})
+    },
 
     openModal() {
       this.$refs.loginModalRef.$refs.modalRef.openModal()
