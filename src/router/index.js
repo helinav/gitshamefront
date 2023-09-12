@@ -4,6 +4,7 @@ import AccountView from "@/views/AccountView.vue";
 import PlayView from "@/views/PlayView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 import LoginView from "@/views/LoginView.vue";
+import GameView from "@/views/GameView.vue";
 
 const routes = [
   {
@@ -30,7 +31,13 @@ const routes = [
     path: '/play',
     name: 'playRoute',
     component: PlayView
-  }
+  },
+  {
+    path: '/game',
+    name: 'gameRoute',
+    component: GameView
+  },
+
 ]
 
 const router = createRouter({

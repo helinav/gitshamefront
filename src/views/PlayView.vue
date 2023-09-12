@@ -15,7 +15,7 @@
               class="btn btn-outline-success">Alusta
       </button>
     </div>
-    <div v-if="isAdmin" class="button-container" @click="">
+    <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
       <button class="corner-button">Lisa uus mäng</button>
     </div>
     <div v-if="isAdmin" class="button-container" @click="">
@@ -24,18 +24,27 @@
     <div v-if="isAdmin" class="button-container" @click="">
       <button class="corner-button">Lisa avatar</button>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <button @click="openModal" type="button" class="btn btn-outline-success">Reeglid</button>
+        <RulesModal ref="rulesModalRef"></RulesModal>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-outline-success">Edetabel</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import CornerButton from "@/components/button/CornerButton.vue";
-import GamesDropdown from "@/components/GamesDropdown.vue";
 import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
+import RulesModal from "@/views/RulesModal.vue";
 
 export default {
   name: "PlayView",
-  components: {GamesDropdown, CornerButton},
+  components: {RulesModal, CornerButton},
   data() {
     return {
       showAlert: false,
@@ -46,6 +55,13 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$refs.rulesModalRef.$refs.modalRef.openModal()
+    },
+
+    closeModal() {
+      this.$refs.rulesModalRef.$refs.modalRef.closeModal()
+    },
 
     updateNavMenu() {
       this.isLoggedIn = sessionStorage.getItem('userId') !== null

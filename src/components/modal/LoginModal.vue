@@ -2,7 +2,7 @@
   <div>
     <Modal close-button-name="Tagasi" ref="modalRef">
       <template #header>
-        <h3>Logi sisse</h3>
+        <h1>Logi sisse</h1>
       </template>
       <template #body>
         <div class="container text-center">

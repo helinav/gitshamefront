@@ -4,7 +4,7 @@
       <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="openModal()" type="button" class="btn btn-outline-success">Logi sisse</button>
+      <button @click="openModal" type="button" class="btn btn-outline-success">Logi sisse</button>
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-5">
