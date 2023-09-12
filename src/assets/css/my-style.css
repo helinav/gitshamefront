@@ -1,73 +1,90 @@
-/* Gistshame default fondid, fontide suursed ja värvid */
-
-.page-container {
-    width: 700px; /* Set your desired width in pixels */
-    margin: 0 auto; /* Center the container horizontally */
-}
+ /*Gistshame default fondid, fontide suursed ja värvid */
 
 body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
+    text-align: center;
+    margin: 0 auto; /* Center the container horizontally */
 }
 
-/* Style for heading elements (h1, h2, etc.) */
-h1 {
-    color: #19eb81; /* Roheline */
+/* Headers. 4 colours, 4 types */
+h {
+    color: #ffffff;
     font-family: Iosevka, sans-serif;
     font-size: 25px;
     margin-bottom: 25px;
 }
-
-h2 {
-    color: #0378e2; /* Sinine */
-    font-family: Iosevka, sans-serif;
-    font-size: 25px;
-    margin-bottom: 25px;
+h.h-green {
+    color: #19eb81;
+}
+h.h-blue {
+    color: #3466c0;
+}
+h.h-red {
+    color: #f72f35;
 }
 
-
-h3 {
-    color: #f72f35; /* punane */
-    font-family: Iosevka, sans-serif;
-    font-size: 25px;
-    margin-bottom: 25px;
-}
-
-
-/* Paragraph styles */
+/* Paragraphs. 4 colours, 4 types */
 p {
     font-family: 'ParagraphFont', Iosevka, sans-serif;
     color: #FFFFFF; /* Valge */
     font-size: 15px;
     line-height: 10px;
 }
-
-.paragraph-2 {
-    font-family: Iosevka, sans-serif;
+p.p-green {
+    color: #19eb81;
+}
+p.p-blue {
     color: #3466c0;
-    font-size: 15px;
-    line-height: 10px;
+}
+p.p-red {
+    color: #f72f35;
 }
 
-/* Button styles */
-button {
-    font-family: 'ButtonFont', Iosevka;
-    font-size: 16px;
-    background-color: #007bff; /* Change background color as needed */
-    color: #fff; /* Change text color as needed */
-    /* Other button styles */
+/* Buttons. 3 colours, 3 types */
+btn {
+    background: #19eb81;
+    border-bottom: 3px inset rgba(0,0,0,.5);
+    border-left: 3px inset rgba(0,0,0,.5);
+    border-right: 3px inset rgba(255,255,255,.5);
+    border-top: 3px inset rgba(255,255,255,.5);
+    color: #232323;
+    font-family: "Iosevka Heavy";
+    /*font-kerning: 100;*/
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15;
+    margin: 10px;
+    min-width: 150px;
+    padding: 4px;
+    text-transform: uppercase;
+    width: auto;
+    &:focus,
+    &:hover {
+        background: #7df3b8;
+    }
 }
+ btn.btn-red {
+     background-color: #f72f35;
+     color: #FFFFFF;
 
-green-button {
-    font-family: Iosevka, sans-serif;
-    border-radius: 0; /* Remove rounded corners */
-    background-color: #19eb81; /* Change the button color to your desired color */
-    color: #333; /* Set text color to white or any other color that suits the background */
+     &:focus,
+     &:hover {
+         background: #f74349;
+     }
+ }
+
+/* Emtypsaces. 3 types */
+.emptyspace-50 {
+    padding-bottom: 50px;
 }
-
-.emptyspace { padding-bottom: 20px; /* Adds 10px space at the bottom of the paragraph */
+.emptyspace.emptyspace-25 {
+    padding-bottom: 25px;
 }
-
+.emptyspace.emptyspace-10 {
+    padding-bottom: 10px;
+}
 
 /* Style for the image link */
 .image-link {
@@ -82,10 +99,6 @@ green-button {
 .image-link:hover {
     transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
 }
-
-
-
-
 
 
 /* Additional styles */
@@ -126,3 +139,8 @@ green-button {
 }
 
 
+ /*.page-container {*/
+ /*    margin: 0 auto; !* Center the container horizontally *!*/
+ /*    text-align: center;*/
+ /*    !*width: 700px; !* Set your desired width in pixels *!*!*/
+ /*}*/
