@@ -1,5 +1,4 @@
  /*Gistshame default fondid, fontide suursed ja värvid */
-
 body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
@@ -7,41 +6,41 @@ body {
     margin: 0 auto; /* Center the container horizontally */
 }
 
-/* Headers. 4 colours, 4 types */
+/* Headers */
 h {
     color: #ffffff;
     font-family: Iosevka, sans-serif;
     font-size: 25px;
     margin-bottom: 25px;
 }
-h.h-green {
+.h-green {
     color: #19eb81;
 }
-h.h-blue {
+.h-blue {
     color: #3466c0;
 }
-h.h-red {
+.h-red {
     color: #f72f35;
 }
 
-/* Paragraphs. 4 colours, 4 types */
+/* Paragraphs */
 p {
     font-family: 'ParagraphFont', Iosevka, sans-serif;
     color: #FFFFFF; /* Valge */
     font-size: 15px;
     line-height: 10px;
 }
-p.p-green {
+.p-green {
     color: #19eb81;
 }
-p.p-blue {
+.p-blue {
     color: #3466c0;
 }
-p.p-red {
+.p-red {
     color: #f72f35;
 }
 
-/* Buttons. 3 colours, 3 types */
+/* Buttons */
 btn {
     background: #19eb81;
     border-bottom: 3px inset rgba(0,0,0,.5);
@@ -49,8 +48,8 @@ btn {
     border-right: 3px inset rgba(255,255,255,.5);
     border-top: 3px inset rgba(255,255,255,.5);
     color: #232323;
-    font-family: "Iosevka Heavy";
-    /*font-kerning: 100;*/
+    font-family: "Iosevka Semibold";
+    font-kerning: 100;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -62,29 +61,31 @@ btn {
     width: auto;
     &:focus,
     &:hover {
-        background: #7df3b8;
+        background: #3466c0;
     }
 }
- btn.btn-red {
-     background-color: #f72f35;
+ .btn-red {
+     background-color: #f8585d;
      color: #FFFFFF;
-
      &:focus,
      &:hover {
-         background: #f74349;
+         background: #f72f35;
      }
  }
 
-/* Emtypsaces. 3 types */
-.emptyspace-50 {
-    padding-bottom: 50px;
-}
-.emptyspace.emptyspace-25 {
-    padding-bottom: 25px;
-}
-.emptyspace.emptyspace-10 {
-    padding-bottom: 10px;
-}
+/* Padding */
+ .padding-10 {
+     padding-bottom: 10px;
+ }
+ .padding-25 {
+     padding-bottom: 25px;
+ }
+ .padding-50 {
+     padding-bottom: 50px;
+ }
+ .padding-60 {
+     padding-bottom: 60px;
+ }
 
 /* Style for the image link */
 .image-link {
@@ -137,7 +138,6 @@ btn {
     left: 50%; /* Vasak paigutus on 50% */
     transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
 }
-
 
  /*.page-container {*/
  /*    margin: 0 auto; !* Center the container horizontally *!*/

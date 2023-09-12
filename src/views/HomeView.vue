@@ -1,18 +1,17 @@
 <template>
   <div>
     <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
-    <div class="emptyspace-50"></div>
+    <div class="padding-50"></div>
     <p>IGA RAINI ÕPILANE TEAB, ET <span style="color: #19eb81">“JULGE HUNDI RIND ON ... HAAVLEID TÄIS”</span></p>
     <p>GITSHAME MÄNGUD ON LOODUD JULGETELE VALI-IT LÕPETAJATELE.</p>
     <p>TESTI END JA KASVATA ENESEKINDLUST ...</p>
     <p>ÕPI KASVÕI LÄBI HÄBI!</p>
-    <div class="emptyspace-50"></div>
-    <btn class="btn-red" @click="$router.push({name:'loginRoute'})">Alusta</btn>
-    <div class="emptyspace-50"></div>
+    <div class="padding-50"></div>
+    <btn @click="$router.push({name:'loginRoute'})">Alusta</btn>
+    <div class="padding-60"></div>
   </div>
   <p class="p-blue"> "2023 Vali-It Lend 30 / Autorid: Helina, Rasmus, Kristo, ChatGPT / Juhendaja: Rain </p>
-  <div class="emptyspace-25"></div>
-
+  <div class="padding-10"></div>
   <a href="http://vali-it.ee/">
       <img class="image-link" src="../assets/pictures/vali-it_logo.png" width="80" alt="Vali-It Logo"/>
     </a>
