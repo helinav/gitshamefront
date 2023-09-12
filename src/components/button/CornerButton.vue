@@ -1,6 +1,6 @@
 <template>
   <div class="button-container">
-    <button class="corner-button">Logi välja</button>
+    <button class="corner-button ">Logi välja</button>
   </div>
 </template>
 
@@ -12,14 +12,15 @@ export default {
 
 <style scoped>
 .button-container {
-  position: relative; /* Create a positioning context for the absolute positioning of the button */
-  width: 100%; /* Ensure the container takes up the full width of the page */
-  height: 100%; /* Ensure the container takes up the full height of the page */
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .corner-button {
   position: absolute;
-  bottom: 10px; /* Adjust as needed to position the button at the desired vertical distance from the corner */
-  right: 10px; /* Adjust as needed to position the button at the desired horizontal distance from the corner */
+  bottom: 10px;
+  right: 10px;
+  margin-bottom: 10px; /* Add margin to separate the two buttons */
 }
 </style>

@@ -3,7 +3,9 @@
   </nav>
   <router-view/>
 </template>
+<script>
 
+</script>
 <style>
 #app {
   font-family: Iosevka, sans-serif;

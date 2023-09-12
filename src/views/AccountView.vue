@@ -67,63 +67,36 @@ export default {
 
   methods: {
 
-    setUsername(newUsername) {
-      this.userInfo.username = newUsername
-    },
-
-    setPassword(newPassword) {
-      this.userInfo.password = newPassword
-    },
-
-    setEmail(newEmail) {
-      this.userInfo.email = newEmail
-    },
-
-    setImageId(newImageId) {
-      this.userInfo.imageId = newImageId
-    },
-
-    createAccount() {
-      this.setUsername()
-      this.setPassword()
-      this.setEmail()
-      this.setImageId()
-      if (this.mandatoryFieldsAreFilled()) {
-        this.addAccountInfo()
-      } else {
-        this.errorResponse.message = FILL_MANDATORY_FIELDS
-      }
-    },
-
-    addAccountInfo() {
-        this.$http.post("/account", this.userInfo
-        ).then(response => {
-          this.handleSuccessResponse()
-        }).catch(error => {
-          this.handleErrorResponse(error)
-        })
+    getUserInfo() {
+      this.$http.get("/account", {
+            params: {
+              username: this.username,
+              password: this.password,
+              email: this.email,
+              imageId: this.imageId
+            }
+          }
+      ).then(response => {
+        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
+        this.userInfo = response.data
+      }).catch(error => {
+        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
+        const errorResponseBody = error.response.data
+      })
     },
 
     mandatoryFieldsAreFilled() {
       let request = this.userInfo;
       return request.username.length > 0 &&
           request.password.length > 0 &&
-          request.email.includes('@') &&
-          request.imageId
+          reque
     },
 
-    handleSuccessResponse() {
-      this.successMessage = ACCOUNT_ADDED
+    addAccount() {
+
     },
 
-    handleErrorResponse(error) {
-      if (error.response.data.errorCode === USERNAME_ALREADY_EXISTS ||
-          error.response.data.errorCode === EMAIL_ALREADY_EXISTS ) {
-        this.errorResponse.message = error.response.data.message;
-        return;
-      }
-      router.push({name: 'errorRoute'});
-    }
+
   }
 
 }
