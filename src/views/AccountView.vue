@@ -67,35 +67,6 @@ export default {
 
   methods: {
 
-    getUserInfo() {
-      this.$http.get("/account", {
-            params: {
-              username: this.username,
-              password: this.password,
-              email: this.email,
-              imageId: this.imageId
-            }
-          }
-      ).then(response => {
-        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
-        this.userInfo = response.data
-      }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
-        const errorResponseBody = error.response.data
-      })
-    },
-
-    mandatoryFieldsAreFilled() {
-      let request = this.userInfo;
-      return request.username.length > 0 &&
-          request.password.length > 0 &&
-          reque
-    },
-
-    addAccount() {
-
-    },
-
 
   }
 

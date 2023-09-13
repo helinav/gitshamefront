@@ -21,7 +21,7 @@
     <div v-if="isAdmin" class="button-container" @click="">
       <button class="corner-button">Muuda mängu</button>
     </div>
-    <div v-if="isAdmin" class="button-container" @click="">
+    <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'avatarRoute'})">
       <button class="corner-button">Lisa avatar</button>
     </div>
     <div class="row justify-content-center">
@@ -40,7 +40,7 @@
 import CornerButton from "@/components/button/CornerButton.vue";
 import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
-import RulesModal from "@/views/RulesModal.vue";
+import RulesModal from "@/components/modal/RulesModal.vue";
 
 export default {
   name: "PlayView",
