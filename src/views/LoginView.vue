@@ -1,14 +1,17 @@
+<head>
+<link rel="stylesheet" href="my-style.css"/>
+</head>
 <template>
   <div class="container text-center vh-100">
     <div>
-      <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
+      <img src="../assets/pictures/pic_placeholder.png" width="400" alt="Logo"/>
     </div>
     <div class="justify-content-center mt-5">
-      <button @click="openModal" type="button" class="btn btn-outline-success">Logi sisse</button>
+      <btn @click="openModal()">Logi sisse</btn>
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
-    <div class="justify-content-center mt-5">
-      <button @click="navigateToAccountView" type="button" class="btn btn-outline-success">Loo uus konto</button>
+    <div class="justify-content-center mt-3">
+      <btn @click="navigateToAccountView">Loo uus konto</btn>
     </div>
   </div>
 </template>
