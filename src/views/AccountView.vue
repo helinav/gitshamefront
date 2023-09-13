@@ -25,13 +25,7 @@
       </div>
     </form>
     <div class="mb-3">
-      <label class="form-label">Vali pilt</label>
-      <img src="../assets/pictures/avatar1_hacker.png" width="150" alt="Avatar 1"/>
-      <img src="../assets/pictures/avatar2_neo.png" width="150" alt="Avatar 2"/>
-      <img src="../assets/pictures/avatar3_hannes.png" width="150" alt="Avatar 3"/>
-      <img src="../assets/pictures/avatar4_mrrobot.png" width="150" alt="Avatar 4"/>
-      <img src="../assets/pictures/avatar5_bender.png" width="150" alt="Avatar 5"/>
-      <img src="../assets/pictures/avatar6_sandra.png" width="150" alt="Avatar 6"/>
+
     </div>
     <button @click="" type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
     <AlertSuccess :alert-message="successMessage"/>

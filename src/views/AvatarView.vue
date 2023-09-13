@@ -7,7 +7,7 @@
     </div>
     <ImageInput @event-emit-base64="setAvatarRequestImageData"/>
     <div class="justify-content-center mt-5">
-      <button @event-update-success-message="setSuccessMessage" @click="saveImage">Lisa pilt</button>
+      <button @event-update-success-message="setSuccessMessage" @click="addAvatar">Lisa pilt</button>
     </div>
     <div class="justify-content-center">
       <button @click="$router.push({name: 'playRoute'})">Tagasi</button>
@@ -38,35 +38,33 @@ export default defineComponent({
 
   methods: {
     setAvatarRequestImageData(imageDataBase64) {
-      this.imageData = imageDataBase64
+      this.avatarRequest.imageData = imageDataBase64
     },
 
     setSuccessMessage(successMessage) {
       this.successMessage = successMessage
     },
 
-    handleAvatarImageSuccessResponse() {
+    addAvatar() {
+      this.sendAvatarRequest()
+    },
+
+    sendAvatarRequest() {
+      this.$http.post("/avatar", this.avatarRequest
+      ).then(response => {
+        this.handleAvatarRequestSuccessResponse();
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+
+    handleAvatarRequestSuccessResponse() {
       this.successMessage = AVATAR_ADDED
     },
 
     executeLogOut() {
       sessionStorage.clear()
       router.push({name: 'homeRoute'})
-    },
-
-    sendAvatarImage() {
-      this.$http.post("/avatar", this.avatarRequest
-      ).then(response => {
-        this.handleAvatarImageSuccessResponse()
-      }).catch(error => {
-        const errorResponseBody = error.response.data
-      })
-    },
-
-    saveImage() {
-      this.setSuccessMessage()
-      this.setAvatarRequestImageData()
-      this.sendAvatarImage()
     }
   }
 })

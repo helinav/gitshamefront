@@ -1,5 +1,7 @@
 <template>
-<img :src="imageDataBase64" class="img-thumbnail">
+<div>
+  <img :src="imageDataBase64"/>
+</div>
 </template>
 
 <script>
