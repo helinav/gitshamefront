@@ -40,7 +40,7 @@
 import CornerButton from "@/components/button/CornerButton.vue";
 import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
-import RulesModal from "@/views/RulesModal.vue";
+import RulesModal from "@/components/modal/RulesModal.vue";
 
 export default {
   name: "PlayView",

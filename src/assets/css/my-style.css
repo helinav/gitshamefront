@@ -1,4 +1,4 @@
- /*Gistshame default fondid, fontide suursed ja värvid */
+/*Gistshame default fondid, fontide suursed ja värvid */
 body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
@@ -13,12 +13,15 @@ h {
     font-size: 25px;
     margin-bottom: 25px;
 }
+
 .h-green {
     color: #19eb81;
 }
+
 .h-blue {
     color: #3466c0;
 }
+
 .h-red {
     color: #f72f35;
 }
@@ -30,12 +33,15 @@ p {
     font-size: 15px;
     line-height: 10px;
 }
+
 .p-green {
     color: #19eb81;
 }
+
 .p-blue {
     color: #3466c0;
 }
+
 .p-red {
     color: #f72f35;
 }
@@ -43,10 +49,10 @@ p {
 /* Buttons */
 btn {
     background: #19eb81;
-    border-bottom: 3px inset rgba(0,0,0,.5);
-    border-left: 3px inset rgba(0,0,0,.5);
-    border-right: 3px inset rgba(255,255,255,.5);
-    border-top: 3px inset rgba(255,255,255,.5);
+    border-bottom: 3px inset rgba(0, 0, 0, .5);
+    border-left: 3px inset rgba(0, 0, 0, .5);
+    border-right: 3px inset rgba(255, 255, 255, .5);
+    border-top: 3px inset rgba(255, 255, 255, .5);
     color: #232323;
     font-family: "Iosevka Semibold";
     font-kerning: 100;
@@ -59,33 +65,39 @@ btn {
     padding: 4px;
     text-transform: uppercase;
     width: auto;
+
     &:focus,
     &:hover {
         background: #3466c0;
     }
 }
- .btn-red {
-     background-color: #f8585d;
-     color: #FFFFFF;
-     &:focus,
-     &:hover {
-         background: #f72f35;
-     }
- }
+
+.btn-red {
+    background-color: #f8585d;
+    color: #FFFFFF;
+
+    &:focus,
+    &:hover {
+        background: #f72f35;
+    }
+}
 
 /* Padding */
- .padding-10 {
-     padding-bottom: 10px;
- }
- .padding-25 {
-     padding-bottom: 25px;
- }
- .padding-50 {
-     padding-bottom: 50px;
- }
- .padding-60 {
-     padding-bottom: 60px;
- }
+.padding-10 {
+    padding-bottom: 10px;
+}
+
+.padding-25 {
+    padding-bottom: 25px;
+}
+
+.padding-50 {
+    padding-bottom: 50px;
+}
+
+.padding-60 {
+    padding-bottom: 60px;
+}
 
 /* Style for the image link */
 .image-link {
@@ -101,17 +113,17 @@ btn {
     transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
 }
 
- .page-container {
-     margin: 0 auto; /* Center the container horizontally */
-     text-align: center;
-     /*width: 700px; !* Set your desired width in pixels *!*/
- }
+.page-container {
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center;
+    /*width: 700px; !* Set your desired width in pixels *!*/
+}
 
 .hoverable-link {
     cursor: pointer;
 }
 
-.image-size{
+.image-size {
     width: 75%;
 }
 
@@ -121,22 +133,26 @@ btn {
 
 /* Kui modaal on nähtav, rakenda järgmised stiilid */
 .modal.fade.show.d-block {
-    background-color: rgb(35, 35, 35); /* Tausta värv koos läbipaistvusega */
+    background-color: rgba(35, 35, 35, 0.8); /* Tausta värv koos läbipaistvusega */
     position: fixed; /* Positsiooni tüüp on fikseeritud */
     z-index: 1050; /* Z-indeks määrab modaalakna kihi järjekorra */
     left: 0; /* Vasak paigutus on null */
     top: 0; /* Ülemine paigutus on null */
     width: 100%; /* Laius on 100% */
     height: 100%; /* Kõrgus on 100% */
-    overflow: hidden; /* Peidab ülejäänud sisu, mis ei mahu alale */
-    border-radius: 0; /* Remove rounded corners */
+    display: flex; /* Kasuta flex-konteinerina */
+    justify-content: center; /* Horisontaalselt keskjoondatud */
+    align-items: center; /* Vertikaalselt keskjoondatud */
 }
 
 /* Rakenda järgmised stiilid modaalakna sisule */
 .modal-dialog {
-    position: fixed; /* Positsiooni tüüp on fikseeritud */
-    top: 10%; /* Ülemine paigutus on 10% */
-    left: 50%; /* Vasak paigutus on 50% */
-    transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
+    font-family: "Iosevka Medium";
+    position: relative; /* Positsiooni tüüp on suhteline, et hoida teksti paigutust korralikult */
+    max-width: 400px; /* Maksimaalne laius */
+    width: 100%; /* Laius on 100% */
+    background-color: #232323; /* Tausta värv */
+    border-radius: 4px; /* Veidi ümardatud nurgad */
+    transform: translate(0, -50%); /* Vertikaalselt keskjoondatud */
+    border-radius: 0;
 }
-

@@ -10,7 +10,7 @@
       <btn @click="openModal()">Logi sisse</btn>
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
-    <div class="justify-content-center mt-3">
+    <div class="justify-content-center mt-1">
       <btn @click="navigateToAccountView">Loo uus konto</btn>
     </div>
   </div>

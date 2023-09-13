@@ -8,7 +8,7 @@
               Default title
             </slot>
           </h1>
-          <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
+          <butbtton type="button" class="btn-close" aria-label="Close" @click="closeModal"></butbtton>
         </div>
         <div class="modal-body">
           <slot name="body">
@@ -16,7 +16,7 @@
           </slot>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" @click="closeModal">{{ closeButtonName }}</button>
+          <btn @click="closeModal">{{ closeButtonName }}</btn>
           <slot name="footer">
           </slot>
         </div>
