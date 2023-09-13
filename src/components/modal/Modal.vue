@@ -8,7 +8,9 @@
               Default title
             </slot>
           </h1>
-          <butbtton type="button" class="btn-close" aria-label="Close" @click="closeModal"></butbtton>
+          <div class="header-button">
+            <button class="btn-close" @click="closeModal"></button>
+          </div>
         </div>
         <div class="modal-body">
           <slot name="body">
