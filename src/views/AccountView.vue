@@ -40,7 +40,7 @@
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
     </form>
-    <btn @click="" type="submit">Loo uus kasutaja</btn>
+    <btn @click="" type="submit">Loo kasutaja</btn>
     <AlertSuccess :alert-message="successMessage" />
     <AlertDanger :alert-message="errorResponse.message" />
   </div>

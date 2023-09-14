@@ -11,7 +11,7 @@
       <LoginModal ref="loginModalRef"></LoginModal>
     </div>
     <div class="justify-content-center mt-1">
-      <btn @click="navigateToAccountView">Loo uus konto</btn>
+      <btn @click="navigateToAccountView">Loo kasutaja</btn>
     </div>
   </div>
 </template>
