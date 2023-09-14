@@ -4,22 +4,26 @@
       <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
     </div>
     <div>
-      <h3>Loo uus kasutaja</h3>
+      <h class="h-green"> Loo uus kasutaja</h>
+      <div class="padding-25"></div>
     </div>
     <form>
-      <div class="mb-3">
-        <label for="exampleInputUsername" class="form-label">Kasutajanimi</label>
-        <input v-model="this.userInfo.username" type="text" class="form-control" placeholder="Kasutajanimi" aria-label="Username"
+      <div class="mb-2">
+        <label for="exampleInputUsername" class="form-label">KASUTAJANIMI</label>
+        <input v-model="this.userInfo.username" type="text" class="form-control narrow-input" placeholder="Kasutajanimi"
+               aria-label="Username"
                aria-describedby="basic-addon1">
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Parool</label>
-        <input v-model="this.userInfo.password" type="password" class="form-control" placeholder="Kirjuta siia tugev salasõna"
+      <div class="mb-2">
+        <label for="exampleInputPassword1" class="form-label">PAROOL</label>
+        <input v-model="this.userInfo.password" type="password" class="form-control narrow-input"
+               placeholder="Kirjuta siia tugev salasõna"
                id="exampleInputPassword1">
       </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">E-maili address</label>
-        <input v-model="this.userInfo.email" type="email" class="form-control" placeholder="example@example.com" id="exampleInputEmail1"
+      <div class="mb-2">
+        <label for="exampleInputEmail1" class="form-label">E-MAIL</label>
+        <input v-model="this.userInfo.email" type="email" class="form-control narrow-input"
+               placeholder="example@example.com" id="exampleInputEmail1"
                aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>

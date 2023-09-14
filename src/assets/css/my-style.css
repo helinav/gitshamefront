@@ -209,3 +209,33 @@ btn {
 .header-button {
     margin-left: auto; /* Push the button to the right */
 }
+
+container text-center {
+    border-radius: 0;
+}
+
+
+
+/*login home view fill fields styles*/
+.narrow-input {
+    width: 300px;
+    align-content: center;
+    margin: 0 auto;
+    border-radius: 0;
+
+}
+.form-label {
+    color: #19eb81;
+    border-radius: 0;
+
+}
+.form-control::placeholder {
+    color: #C0C0C0;
+    border-radius: 0;
+
+}
+
+
+.heading-padding {
+    padding-bottom: 20px; /* Adjust the padding size as needed */
+}
