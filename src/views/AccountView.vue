@@ -28,9 +28,9 @@
       </div>
     </form>
     <div class="mb-3">
-      <AvatarImage :image-data-base64="imageDataFromDatabase"/>
+      <AvatarImage :image-data-base64="avatars"/>
     </div>
-    <button @click="" type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
+    <button @click="addAccount" type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
     <AlertSuccess :alert-message="successMessage"/>
     <AlertDanger :alert-message="errorResponse.message"/>
   </div>
@@ -54,7 +54,6 @@ export default {
           imageData: ''
         }
       ],
-      imageDataFromDatabase: '',
       userInfo: {
         username: '',
         password: '',
@@ -68,6 +67,33 @@ export default {
       },
     }
   },
+
+  methods: {
+
+    setAvatarsImageData(imageDataBase64) {
+      this.avatars.imageDataBase64 = imageDataBase64;
+    },
+
+    addAccount() {
+
+    },
+
+    mandatoryFieldsAreFilled() {
+      let request = this.userInfo;
+      return request.username > 0 &&
+          request.password > 0 &&
+          request.email.includes('@') > 0 &&
+          request.imageId > 0
+    },
+
+    setSuccessMessage() {
+      this.successMessage = ACCOUNT_ADDED
+    },
+
+
+
+  }
+
 }
 
 </script>
