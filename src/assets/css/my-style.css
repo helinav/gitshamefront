@@ -209,8 +209,12 @@ btn {
 .header-button {
     margin-left: auto; /* Push the button to the right */
 }
-
 container text-center {
+    border-radius: 0;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="password"] {
     border-radius: 0;
 }
 
@@ -236,6 +240,17 @@ container text-center {
 }
 
 
-.heading-padding {
-    padding-bottom: 20px; /* Adjust the padding size as needed */
+.avatar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style the avatar images as circles */
+.avatar-container img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 10px; /* Adjust the margin as needed */
+    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
 }

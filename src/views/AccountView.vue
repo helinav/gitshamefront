@@ -1,13 +1,25 @@
 <template>
   <div class="container text-center vh-100">
     <div>
-      <img src="../assets/pictures/avaleht_GITBLAME.png" width="800" alt="Logo"/>
+      <img src="../assets/pictures/menu_banner-makeaccount.png" width="250" alt="Logo" />
     </div>
     <div>
-      <h class="h-green"> Loo uus kasutaja</h>
+      <h class="h-green"> LOO UUS KASUTAJA</h>
       <div class="padding-25"></div>
+      <div class="mb-2">
+        <label class="form-label">VALI AVATAR! </label>
+        <div class="avatar-container">
+          <img src="../assets/pictures/avatar1_hacker.png" alt="Avatar 1" @click="selectAvatar('avatar1')" />
+          <img src="../assets/pictures/avatar2_neo.png" alt="Avatar 2" @click="selectAvatar('avatar2')" />
+          <img src="../assets/pictures/avatar3_hannes.png" alt="Avatar 3" @click="selectAvatar('avatar3')" />
+          <img src="../assets/pictures/avatar4_mrrobot.png" alt="Avatar 4" @click="selectAvatar('avatar4')" />
+          <img src="../assets/pictures/avatar5_bender.png" alt="Avatar 5" @click="selectAvatar('avatar5')" />
+          <img src="../assets/pictures/avatar6_sandra.png" alt="Avatar 6" @click="selectAvatar('avatar6')" />
+        </div>
+      </div>
     </div>
     <form>
+      <div class="padding-10"></div>
       <div class="mb-2">
         <label for="exampleInputUsername" class="form-label">KASUTAJANIMI</label>
         <input v-model="this.userInfo.username" type="text" class="form-control narrow-input" placeholder="Kasutajanimi"
@@ -21,25 +33,16 @@
                id="exampleInputPassword1">
       </div>
       <div class="mb-2">
-        <label for="exampleInputEmail1" class="form-label">E-MAIL</label>
+        <label for="exampleInputEmail1" class="form-label">SINU E-MAIL</label>
         <input v-model="this.userInfo.email" type="email" class="form-control narrow-input"
                placeholder="example@example.com" id="exampleInputEmail1"
                aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
     </form>
-    <div class="mb-3">
-      <label class="form-label">Vali pilt</label>
-      <img src="../assets/pictures/avatar1_hacker.png" width="150" alt="Avatar 1"/>
-      <img src="../assets/pictures/avatar2_neo.png" width="150" alt="Avatar 2"/>
-      <img src="../assets/pictures/avatar3_hannes.png" width="150" alt="Avatar 3"/>
-      <img src="../assets/pictures/avatar4_mrrobot.png" width="150" alt="Avatar 4"/>
-      <img src="../assets/pictures/avatar5_bender.png" width="150" alt="Avatar 5"/>
-      <img src="../assets/pictures/avatar6_sandra.png" width="150" alt="Avatar 6"/>
-    </div>
-    <button @click="" type="submit" class="btn btn-outline-success">Loo uus kasutaja</button>
-    <AlertSuccess :alert-message="successMessage"/>
-    <AlertDanger :alert-message="errorResponse.message"/>
+    <btn @click="" type="submit">Loo uus kasutaja</btn>
+    <AlertSuccess :alert-message="successMessage" />
+    <AlertDanger :alert-message="errorResponse.message" />
   </div>
 </template>
 
