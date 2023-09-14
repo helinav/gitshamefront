@@ -4,14 +4,13 @@
       <h1>Kuidas mäng käib?</h1>
     </template>
     <template #body>
-      Igas mängus on 10 küsimust. Kõigile küsimustle on vastamiseks aega max 60 sekundit. Mida kiiremini vastad seda rohkem punkte teenid. Aga ole tähelepanelik!
-      Vale vastuse eest saad gitblame-i ja kaotad 1 elu. 3 vale vastuse eest teenid "GITSHAME"-i, siis on elud otsas ja sinu mäng lõplikult läbi - Game Over.
+      Igas mängus on 10 küsimust või ülesannet. Kõigi nende vastamiseks ja lahendamiseks on aega 60 sekundit. Mida kiiremini vastad seda rohkem punkte teenid. Aga ole tähelepanelik!
+      Vale vastuse eest saad gitblame-i ja kaotad 1 elu. 3 vale vastuse eest teenid aga "GITSHAME"-i, siis on elud otsas ja sinu mäng lõplikult läbi - Game Over.
 
-      Sinu skoori, järele jäänud küsimuste ja teenitud gitblame-ide hulk, on mängu ajal alati nähtaval.
-      Pea meeles, et küsimuseks vastamiseks ettenähtud aeg hakkab jooksma, kohe kui klikkad nupule "Järgmine küsimus".
+      Sinu skoori, teenitud gitblame-id ja järgi jäänud küsimuste hulk on mängu ajal alati nähtaval. Pea meeles, et küsimusele vastamiseks ettenähtud aeg hakkab tiksuma
+      kohe, kui klikkad PUNASELE nupule "MÄNGI". Lisaks vastusevariantidega küsimustele on mängus ka paar lihtsat kirjutamisülesannet vm.
 
-      Mängus on 3 tüüpi küsimusi. Kui vastusevariantidega küsimusele võib õigeid vastuseid olla rohkem kui 1, siis on seda ka küsimuses mainitud. Lisaks on veel
-
+      Iga mängu 5 parimat vastajat saavad esile tõstetud "autahvlil" GITSHAME mängu edetabelis. Head mängimist!
 
     </template>
     <template #footer>
