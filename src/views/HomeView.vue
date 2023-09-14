@@ -11,7 +11,7 @@
     <div class="padding-50"></div>
   </div>
   <p class="p-blue"> "2023 Vali-It Lend 30 / Autorid: Helina, Rasmus, Kristo, ChatGPT / Juhendaja: Rain </p>
-  <a href="http://vali-it.ee/">
+  <a href="http://vali-it.ee/" target="_blank">
       <img class="image-link" src="../assets/pictures/vali-it_logo.png" width="80" alt="Vali-It Logo"/>
     </a>
 </template>
