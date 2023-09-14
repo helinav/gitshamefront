@@ -1,4 +1,4 @@
- /*Gistshame default fondid, fontide suursed ja värvid */
+/*Gistshame default fondid, fontide suursed ja värvid */
 body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
@@ -13,14 +13,21 @@ h {
     font-size: 25px;
     margin-bottom: 25px;
 }
+
 .h-green {
     color: #19eb81;
 }
+
 .h-blue {
     color: #3466c0;
 }
+
 .h-red {
     color: #f72f35;
+}
+
+.h-black {
+    color: #232323;
 }
 
 /* Paragraphs */
@@ -30,12 +37,15 @@ p {
     font-size: 15px;
     line-height: 10px;
 }
+
 .p-green {
     color: #19eb81;
 }
+
 .p-blue {
     color: #3466c0;
 }
+
 .p-red {
     color: #f72f35;
 }
@@ -43,10 +53,10 @@ p {
 /* Buttons */
 btn {
     background: #19eb81;
-    border-bottom: 3px inset rgba(0,0,0,.5);
-    border-left: 3px inset rgba(0,0,0,.5);
-    border-right: 3px inset rgba(255,255,255,.5);
-    border-top: 3px inset rgba(255,255,255,.5);
+    border-bottom: 3px inset rgba(0, 0, 0, .5);
+    border-left: 3px inset rgba(0, 0, 0, .5);
+    border-right: 3px inset rgba(255, 255, 255, .5);
+    border-top: 3px inset rgba(255, 255, 255, .5);
     color: #232323;
     font-family: "Iosevka Semibold";
     font-kerning: 100;
@@ -55,37 +65,54 @@ btn {
     display: inline-block;
     font-size: 15;
     margin: 10px;
-    min-width: 150px;
+    min-width: 130px;
     padding: 4px;
     text-transform: uppercase;
     width: auto;
+
     &:focus,
     &:hover {
         background: #3466c0;
     }
 }
- .btn-red {
-     background-color: #f8585d;
-     color: #FFFFFF;
-     &:focus,
-     &:hover {
-         background: #f72f35;
-     }
- }
+
+.btn-red {
+    background-color: #f8585d;
+    color: #FFFFFF;
+
+    &:focus,
+    &:hover {
+        background: #f72f35;
+    }
+}
+
+.btn-gold {
+    background-color: #ebb746;
+    color: #FFFFFF;
+
+    &:focus,
+    &:hover {
+        background: #E6A519;
+    }
+}
+
 
 /* Padding */
- .padding-10 {
-     padding-bottom: 10px;
- }
- .padding-25 {
-     padding-bottom: 25px;
- }
- .padding-50 {
-     padding-bottom: 50px;
- }
- .padding-60 {
-     padding-bottom: 60px;
- }
+.padding-10 {
+    padding-bottom: 10px;
+}
+
+.padding-25 {
+    padding-bottom: 25px;
+}
+
+.padding-50 {
+    padding-bottom: 50px;
+}
+
+.padding-60 {
+    padding-bottom: 60px;
+}
 
 /* Style for the image link */
 .image-link {
@@ -101,17 +128,17 @@ btn {
     transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
 }
 
-
-/* Additional styles */
-.my-custom-class {
-    /* Define styles for elements with class "my-custom-class" */
+.page-container {
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center;
+    /*width: 700px; !* Set your desired width in pixels *!*/
 }
 
 .hoverable-link {
     cursor: pointer;
 }
 
-.image-size{
+.image-size {
     width: 75%;
 }
 
@@ -121,26 +148,120 @@ btn {
 
 /* Kui modaal on nähtav, rakenda järgmised stiilid */
 .modal.fade.show.d-block {
-    background-color: rgb(35, 35, 35); /* Tausta värv koos läbipaistvusega */
-    position: fixed; /* Positsiooni tüüp on fikseeritud */
-    z-index: 1050; /* Z-indeks määrab modaalakna kihi järjekorra */
-    left: 0; /* Vasak paigutus on null */
-    top: 0; /* Ülemine paigutus on null */
-    width: 100%; /* Laius on 100% */
-    height: 100%; /* Kõrgus on 100% */
-    overflow: hidden; /* Peidab ülejäänud sisu, mis ei mahu alale */
+    background-color: rgba(35, 35, 35, 0.9); /* Background color with transparency */
+    position: fixed;
+    z-index: 1050;
+    tab-index: color ;
+    border: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-/* Rakenda järgmised stiilid modaalakna sisule */
 .modal-dialog {
-    position: fixed; /* Positsiooni tüüp on fikseeritud */
-    top: 10%; /* Ülemine paigutus on 10% */
-    left: 50%; /* Vasak paigutus on 50% */
-    transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
+    font-family: "Iosevka Medium";
+    position: relative;
+    max-width: 350px; /* Adjust the maximum width of the modal dialog */
+    width: 100%;
+    background-color: #232323;
+    border: none;
+    border-radius: 0;
+    transform: translate(0, -50%); /* Center the modal vertically */
+    align-items: center;
+    top: 5%;
+
 }
 
- /*.page-container {*/
- /*    margin: 0 auto; !* Center the container horizontally *!*/
- /*    text-align: center;*/
- /*    !*width: 700px; !* Set your desired width in pixels *!*!*/
- /*}*/
+.modal-header {
+    font-family: "Iosevka Medium";
+    font-size: 14px;
+    background-color: #19eb81;
+    border: none;
+    border-radius: 0;
+    color: #232323;
+    text-align: center;
+
+}
+.modal-body {
+    font-family: "Iosevka Medium";
+    font-size: 14px;
+    background-color: #19eb81;
+    font-size: 16px;
+    border: none;
+    border-radius: 0;
+    color: #232323;
+    align-items: center;
+}
+
+.modal-footer {
+    background-color: #19eb81;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-dialog .btn-close {
+    color: #3466c0; /* Change the color of the close button */
+    font-size: 15; /* Change the size of the close button */
+    font-family: "Iosevka Medium";
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-button {
+    margin-left: auto; /* Push the button to the right */
+}
+container text-center {
+    border-radius: 0;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="password"] {
+    border-radius: 0;
+}
+
+
+
+/*login home view fill fields styles*/
+.narrow-input {
+    width: 300px;
+    align-content: center;
+    margin: 0 auto;
+    border-radius: 0;
+
+}
+.form-label {
+    color: #19eb81;
+    border-radius: 0;
+
+}
+.form-control::placeholder {
+    color: #C0C0C0;
+    border-radius: 0;
+
+}
+
+
+.avatar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style the avatar images as circles */
+.avatar-container img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 10px; /* Adjust the margin as needed */
+    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+}
