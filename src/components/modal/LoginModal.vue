@@ -2,7 +2,7 @@
   <div>
     <Modal close-button-name="Tagasi" ref="modalRef">
       <template #header>
-        <h1>Logi sisse</h1>
+        <h class="h-black">Logi sisse</h>
       </template>
       <template #body>
         <div class="container text-center">
@@ -22,7 +22,7 @@
         </div>
       </template>
       <template #footer>
-        <button @click="login" type="button" class="btn btn-success">Logi sisse</button>
+        <btn @click="login">Logi sisse</btn>
       </template>
     </Modal>
   </div>
@@ -35,7 +35,6 @@ import router from "@/router";
 import {INCORRECT_CREDENTIALS} from "@/assets/script/ErrorCode";
 import {FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
-
 
 export default {
   name: 'LoginModal',
@@ -91,7 +90,7 @@ export default {
       }).catch(error => {
         this.errorResponse = error.response.data
         if (this.errorResponse.errorCode !== INCORRECT_CREDENTIALS) {
-        router.push({name: 'errorRoute'})
+          router.push({name: 'errorRoute'})
         }
       })
     },
