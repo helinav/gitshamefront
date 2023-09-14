@@ -1,20 +1,17 @@
 <template>
   <div class="container text-center vh-100">
     <div>
-      <img src="../assets/pictures/menu_banner-makeaccount.png" width="250" alt="Logo" />
+      <img src="../assets/pictures/menu_banner-makeaccount.png" width="250" alt="Logo"/>
     </div>
     <div>
       <h class="h-green"> LOO UUS KASUTAJA</h>
       <div class="padding-25"></div>
       <div class="mb-2">
-        <label class="form-label">VALI AVATAR! </label>
-        <div class="avatar-container">
-          <img src="../assets/pictures/avatar1_hacker.png" alt="Avatar 1" @click="selectAvatar('avatar1')" />
-          <img src="../assets/pictures/avatar2_neo.png" alt="Avatar 2" @click="selectAvatar('avatar2')" />
-          <img src="../assets/pictures/avatar3_hannes.png" alt="Avatar 3" @click="selectAvatar('avatar3')" />
-          <img src="../assets/pictures/avatar4_mrrobot.png" alt="Avatar 4" @click="selectAvatar('avatar4')" />
-          <img src="../assets/pictures/avatar5_bender.png" alt="Avatar 5" @click="selectAvatar('avatar5')" />
-          <img src="../assets/pictures/avatar6_sandra.png" alt="Avatar 6" @click="selectAvatar('avatar6')" />
+        <label class="form-label">VALI AVATAR!</label>
+        <div>
+          <div v-for="avatar in avatars" :key="avatar.avatars">
+          <AvatarImage :image-data-base64="avatars" @click=""/>
+          </div>
         </div>
       </div>
     </div>
@@ -40,9 +37,9 @@
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
     </form>
-    <btn @click="" type="submit">Loo kasutaja</btn>
-    <AlertSuccess :alert-message="successMessage" />
-    <AlertDanger :alert-message="errorResponse.message" />
+    <btn @click="addAccount" type="submit">Loo kasutaja</btn>
+    <AlertSuccess :alert-message="successMessage"/>
+    <AlertDanger :alert-message="errorResponse.message"/>
   </div>
 </template>
 
@@ -53,11 +50,16 @@ import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 import {EMAIL_ALREADY_EXISTS, USERNAME_ALREADY_EXISTS} from "@/assets/script/ErrorCode";
 import {ACCOUNT_ADDED, FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
+import AvatarImage from "@/components/AvatarImage.vue";
 
 export default {
-  components: {AlertDanger, AlertSuccess},
+  components: {AvatarImage, AlertDanger, AlertSuccess},
   data() {
     return {
+      avatars: {
+        imageId: 0,
+        imageData: ''
+      },
       userInfo: {
         username: '',
         password: '',
@@ -74,34 +76,55 @@ export default {
 
   methods: {
 
-    getUserInfo() {
-      this.$http.get("/account", {
-            params: {
-              username: this.username,
-              password: this.password,
-              email: this.email,
-              imageId: this.imageId
-            }
-          }
-      ).then(response => {
-        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
-        this.userInfo = response.data
-      }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
-        const errorResponseBody = error.response.data
-      })
+    setAvatarRequestImageData(imageDataBase64) {
+      this.avatars.imageData = imageDataBase64
+    },
+
+    setSuccessMessage() {
+      this.successMessage = ACCOUNT_ADDED
+    },
+
+
+    addAccount() {
+      if (this.mandatoryFieldsAreFilled()) {
+        this.sendAddAccountRequest();
+      } else {
+        this.errorResponse.message = FILL_MANDATORY_FIELDS
+      }
     },
 
     mandatoryFieldsAreFilled() {
       let request = this.userInfo;
       return request.username.length > 0 &&
           request.password.length > 0 &&
-          reque
-    },
-
-    addAccount() {
+          request.email.includes('@') &&
+          request.imageId > 0
 
     },
+
+    sendAddAccountRequest() {
+      this.$http.post("/account", {
+            params: {
+              username: this.userInfo.username,
+              password: this.userInfo.password,
+              email: this.userInfo.email,
+              imageId: this.userInfo.imageId
+            }
+          }
+      ).then(response => {
+        this.handleAddAccountSuccessResponse()
+      }).catch(error => {
+
+      })
+    },
+
+    handleAddAccountSuccessResponse() {
+      this.successMessage = ACCOUNT_ADDED
+    },
+
+
+
+
 
 
   }
