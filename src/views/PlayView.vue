@@ -4,16 +4,30 @@
     {{ alertMessage }}
   </div>
   <div>
-    <img src="../assets/pictures/avaleht_GITBLAME.png" width="900" alt="Logo"/>
+    <img src="../assets/pictures/menu_banner-default.png" width="400" alt="Logo"/>
   </div>
   <div class="row justify-content-center mt-5">
     <div class="col col-3">
-      <!--      <GamesDropdown/>-->
+
+      <div class="dropdown">
+        <h2>VALI MÄNG</h2>
+        <div class="styled-select">
+          <div class="padding-10"></div>
+          <select id="select" name="select" style="width: 80%;"> <!-- Set the width to 100% to expand the dropdown -->
+            <option value="CSS">CSS</option>
+            <option value="Javascript">Javascript</option>
+            <option value="PHP">PHP</option>
+            <option value="ASP.NET">ASP.NET</option>
+            <option value="HTML">HTML</option>
+          </select>
+        </div>
+      </div>
+      <div class="padding-50"></div>
+
     </div>
-    <div class="col col-3">
-      <button v-if="!isAdmin" @click="$router.push({name: 'playGameRoute'})" type="button"
-              class="btn btn-outline-success">Alusta
-      </button>
+    <div class="form-label">
+      <btn v-if="!isAdmin" @click="$router.push({name: 'playGameRoute'})" class="btn-red" type="button">Alusta
+      </btn>
     </div>
     <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
       <button class="corner-button">Lisa uus mäng</button>
@@ -25,12 +39,17 @@
       <button class="corner-button">Lisa avatar</button>
     </div>
     <div class="row justify-content-center">
-      <div class="col-3">
-        <button @click="openModal" type="button" class="btn btn-outline-success">Reeglid</button>
-        <RulesModal ref="rulesModalRef"></RulesModal>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-outline-success">Edetabel</button>
+      <div class="d-flex justify-content-center">
+        <div class="form-label" style="margin-left: 3px;">
+          <btn>Tagasi</btn>
+        </div>
+        <div class="form-label" style="margin-left: 3px;">
+          <btn class="btn-gold">Edetabel</btn>
+        </div>
+        <div class="form-label">
+          <btn @click="openModal">Reeglid</btn>
+          <RulesModal ref="rulesModalRef"></RulesModal>
+        </div>
       </div>
     </div>
   </div>
