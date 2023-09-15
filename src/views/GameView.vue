@@ -36,7 +36,6 @@ export default {
       this.sendGameRequest()
     },
 
-
     sendGameRequest() {
       this.$http.post("/game", this.gameId, {
             params: {
