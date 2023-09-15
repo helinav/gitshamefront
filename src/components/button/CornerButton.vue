@@ -1,6 +1,6 @@
 <template>
-  <div class="button-container">
-    <button class="corner-button ">Logi välja</button>
+  <div class="special-container">
+    <button class="corner-button"> Logi välja </button>
   </div>
 </template>
 
