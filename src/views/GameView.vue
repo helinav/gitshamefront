@@ -5,7 +5,8 @@
     <h1>Lisa uus mäng</h1>
   </div>
   <div class="input-group justify-content-center mb-3">
-    <input type="text" class="form-control w-25" placeholder="Kirjuta mängu nimi" aria-label="Mängu nimi"
+    <input v-model="gameName" type="text" class="form-control w-25" placeholder="Kirjuta mängu nimi"
+           aria-label="Mängu nimi"
            aria-describedby="basic-addon1">
   </div>
   <div @click="addGame">
@@ -17,7 +18,7 @@
 import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 import {GAME_NAME_ADDED} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
-import {GAME_NAME_ALREADY_EXISTS} from "@/assets/script/ErrorCode";
+import {GAME_NAME_ALREADY_EXISTS} from "@/assets/script/AlertMessage";
 
 export default {
   name: 'GameView',
@@ -52,16 +53,20 @@ export default {
     handleGameRequestSuccessResponse() {
       this.successMessage = GAME_NAME_ADDED
       this.resetField()
+      //todo: peab pushima uuele lehele, kus saab lisada küsimusi/vastuseid
     },
 
     handleGameRequestErrorResponse() {
       this.errorMessage = GAME_NAME_ALREADY_EXISTS
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 3000);
+
     },
 
     resetField() {
       this.gameName = ''
     },
-
   }
 
 }
