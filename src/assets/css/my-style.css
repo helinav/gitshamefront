@@ -51,6 +51,13 @@ p {
 .p-red {
     color: #f72f35;
 }
+.p-modal-long-text {
+    font-family: 'ParagraphFont', Iosevka, sans-serif;
+    color: #232323;
+    text-align: left;
+    font-size: 15px;
+    line-height: 20px;
+}
 
 /* Buttons */
 btn {
@@ -167,6 +174,10 @@ btn {
 
 .hoverable-link {
     cursor: pointer;
+}
+
+.wider-modal-dialog {
+    max-width: 600px; /* Adjust the width as needed */
 }
 
 /* Kui modaal on nähtav, rakenda järgmised stiilid */
@@ -306,19 +317,22 @@ container text-center {
 
 /* Style for the dropdown select element */
 .styled-select select {
+    font-family: "Iosevka Medium";
     text-align: center;
-    width: 100%; /* Set the width to 100% */
-    padding: 7px; /* Padding */
-    border-radius: 0px; /* No rounded corners */
-    background-color: #f5f5f5; /* Background color */
-    font-size: 16px; /* Font size */
+    width: 100%;
+    padding: 8px;
+    border-radius: 0px;
+    background-color: #f5f0f0;
+    font-size: 16px;
+    border-radius: 0;
+    font-kerning: auto;
+
 }
 
 /* Style for the dropdown select options */
 .styled-select select option {
     padding: 10px; /* Padding for each option */
 }
-
 
 
 /* Style for the dropdown heading */
