@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img :src="imageDataBase64"/>
+    <img :src="imageDataBase64">
 </div>
 </template>
 
@@ -8,7 +8,13 @@
 export default {
   name: 'AvatarImage',
   props: {
-    imageDataBase64: String
+    imageDataBase64: String,
+    avatars: [
+      {
+        imageId: 0,
+        imageData: ''
+      }
+    ],
   }
 }
 </script>

@@ -151,7 +151,7 @@ btn {
     background-color: rgba(35, 35, 35, 0.9); /* Background color with transparency */
     position: fixed;
     z-index: 1050;
-    tab-index: color ;
+    tab-index: color;
     border: none;
     left: 0;
     top: 0;
@@ -161,6 +161,7 @@ btn {
     justify-content: center;
     align-items: center;
 }
+
 .modal-dialog {
     font-family: "Iosevka Medium";
     position: relative;
@@ -185,6 +186,7 @@ btn {
     text-align: center;
 
 }
+
 .modal-body {
     font-family: "Iosevka Medium";
     font-size: 14px;
@@ -220,6 +222,7 @@ btn {
 .header-button {
     margin-left: auto; /* Push the button to the right */
 }
+
 container text-center {
     border-radius: 0;
 }
@@ -230,7 +233,6 @@ container text-center {
 }
 
 
-
 /*login home view fill fields styles*/
 .narrow-input {
     width: 300px;
@@ -239,11 +241,13 @@ container text-center {
     border-radius: 0;
 
 }
+
 .form-label {
     color: #19eb81;
     border-radius: 0;
 
 }
+
 .form-control::placeholder {
     color: #C0C0C0;
     border-radius: 0;
@@ -264,4 +268,21 @@ container text-center {
     border-radius: 50%;
     margin: 10px; /* Adjust the margin as needed */
     cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+}
+
+.avatar-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.avatar-item {
+    flex-basis: calc(33.33% - 10px); /* 3 items in a row with a little space between */
+    margin-bottom: 10px; /* Space between rows */
+    cursor: pointer; /* Add a pointer cursor to indicate clickability */
+    transition: border 0.3s ease; /* Smooth transition for highlighting */
+}
+
+.avatar-item.selected {
+    border: 2px solid #007bff; /* Highlight the selected avatar */
 }
