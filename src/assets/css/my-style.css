@@ -4,8 +4,6 @@ body {
     font-family: 'DefaultFont', Iosevka, sans-serif;
     text-align: center;
     margin: 0 auto; /* Center the container horizontally */
-    overflow-x: hidden;
-
 }
 
 /* Headers */
@@ -61,7 +59,7 @@ btn {
     border-top: 3px inset rgba(255, 255, 255, .5);
     color: #232323;
     font-family: "Iosevka Semibold";
-    font-kerning: none;
+    font-kerning: 100;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -94,31 +92,10 @@ btn {
 
     &:focus,
     &:hover {
-        background: #f6be00;
+        background: #F6BE00;
     }
 }
 
-
-/*log out shortcut right corner*/
-.special-container {
-    position: relative;
-}
-
-.special-container .corner-button {
-    position: absolute;
-    top: -15;
-    right: 25px;
-    font-family: "Iosevka Semibold";
-    color: #19eb81;
-    padding: 0;
-    border: none;
-    background: none;
-    text-transform: uppercase;
-}
-
-.special-container .corner-button:hover {
-    color: #3466c0; /* Change the color on hover */
-}
 
 /* Padding */
 .padding-10 {
@@ -174,7 +151,7 @@ btn {
     background-color: rgba(35, 35, 35, 0.9); /* Background color with transparency */
     position: fixed;
     z-index: 1050;
-    tab-index: color ;
+    tab-index: color;
     border: none;
     left: 0;
     top: 0;
@@ -184,6 +161,7 @@ btn {
     justify-content: center;
     align-items: center;
 }
+
 .modal-dialog {
     font-family: "Iosevka Medium";
     position: relative;
@@ -208,6 +186,7 @@ btn {
     text-align: center;
 
 }
+
 .modal-body {
     font-family: "Iosevka Medium";
     font-size: 14px;
@@ -243,6 +222,7 @@ btn {
 .header-button {
     margin-left: auto; /* Push the button to the right */
 }
+
 container text-center {
     border-radius: 0;
 }
@@ -253,7 +233,6 @@ container text-center {
 }
 
 
-
 /*login home view fill fields styles*/
 .narrow-input {
     width: 300px;
@@ -262,15 +241,19 @@ container text-center {
     border-radius: 0;
 
 }
+
 .form-label {
     color: #19eb81;
     border-radius: 0;
 
 }
+
 .form-control::placeholder {
     color: #C0C0C0;
     border-radius: 0;
+
 }
+
 
 .avatar-container {
     display: flex;
@@ -287,43 +270,19 @@ container text-center {
     cursor: pointer; /* Add a pointer cursor to indicate interactivity */
 }
 
-/*header alert announcment*/
-.custom-alert {
-    background-color: #19eb81; /* Change the background color */
-    color: #333; /* Change the text color */
-    padding: 15px; /* Adjust the padding */
-    border-radius: 0px; /* Add rounded corners */
-    text-align: center; /* Center the text */
-    font-size: 16px; /* Adjust the font size */
-    font-family: "Iosevka Semibold";
+.avatar-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-/* Style for the dropdown container */
-.dropdown {
-    padding: 10px; /* Padding */
-    border-radius: 0px; /* No rounded corners */
+.avatar-item {
+    flex-basis: calc(33.33% - 10px); /* 3 items in a row with a little space between */
+    margin-bottom: 10px; /* Space between rows */
+    cursor: pointer; /* Add a pointer cursor to indicate clickability */
+    transition: border 0.3s ease; /* Smooth transition for highlighting */
 }
 
-/* Style for the dropdown select element */
-.styled-select select {
-    text-align: center;
-    width: 100%; /* Set the width to 100% */
-    padding: 7px; /* Padding */
-    border-radius: 0px; /* No rounded corners */
-    background-color: #f5f5f5; /* Background color */
-    font-size: 16px; /* Font size */
-}
-
-/* Style for the dropdown select options */
-.styled-select select option {
-    padding: 10px; /* Padding for each option */
-}
-
-
-
-/* Style for the dropdown heading */
-.h-green {
-    color: #19eb81; /* Text color */
-    font-size: 20px; /* Font size */
-    margin-bottom: 10px; /* Spacing below the heading */
+.avatar-item.selected {
+    border: 2px solid #007bff; /* Highlight the selected avatar */
 }
