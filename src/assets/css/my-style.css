@@ -87,12 +87,12 @@ btn {
 }
 
 .btn-gold {
-    background-color: #ebb746;
-    color: #FFFFFF;
+    background-color: #f7cb32;
+    color: #232323;
 
     &:focus,
     &:hover {
-        background: #E6A519;
+        background: #F6BE00;
     }
 }
 

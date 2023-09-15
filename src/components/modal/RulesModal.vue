@@ -1,7 +1,7 @@
 <template>
-  <Modal close-button-name="Tagasi" ref="modalRef">
+  <Modal close-button-name="OK" ref="modalRef">
     <template #header>
-      <h1>Kuidas mäng käib?</h1>
+      <h1>Kuidas mängida?</h1>
     </template>
     <template #body>
       Igas mängus on 10 küsimust või ülesannet. Kõigi nende vastamiseks ja lahendamiseks on aega 60 sekundit. Mida kiiremini vastad seda rohkem punkte teenid. Aga ole tähelepanelik!  Vale vastuse eest saad gitblame-i ja kaotad 1 elu. 3 vale vastuse eest teenid aga "GITSHAME"-i, siis on elud otsas ja sinu mäng lõplikult läbi - Game Over.
@@ -11,8 +11,8 @@
       <div class="padding-10"></div>
       Iga mängu 5 parimat vastajat saavad esile tõstetud "autahvlil" GITSHAME mängu edetabelis. Head mängimist!
     </template>
-    <template #footer>
-      <button @click="closeModal" type="button" class="btn btn-success">SAIN ARU</button>
+    <template>
+      <btn @click="closeModal">OK</btn>
     </template>
   </Modal>
 </template>
