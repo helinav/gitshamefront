@@ -4,6 +4,8 @@ body {
     font-family: 'DefaultFont', Iosevka, sans-serif;
     text-align: center;
     margin: 0 auto; /* Center the container horizontally */
+    overflow-x: hidden;
+
 }
 
 /* Headers */
@@ -59,7 +61,7 @@ btn {
     border-top: 3px inset rgba(255, 255, 255, .5);
     color: #232323;
     font-family: "Iosevka Semibold";
-    font-kerning: 100;
+    font-kerning: none;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -92,10 +94,31 @@ btn {
 
     &:focus,
     &:hover {
-        background: #F6BE00;
+        background: #f6be00;
     }
 }
 
+
+/*log out shortcut right corner*/
+.special-container {
+    position: relative;
+}
+
+.special-container .corner-button {
+    position: absolute;
+    top: -15;
+    right: 25px;
+    font-family: "Iosevka Semibold";
+    color: #19eb81;
+    padding: 0;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+}
+
+.special-container .corner-button:hover {
+    color: #3466c0; /* Change the color on hover */
+}
 
 /* Padding */
 .padding-10 {
@@ -247,9 +270,7 @@ container text-center {
 .form-control::placeholder {
     color: #C0C0C0;
     border-radius: 0;
-
 }
-
 
 .avatar-container {
     display: flex;
@@ -264,4 +285,45 @@ container text-center {
     border-radius: 50%;
     margin: 10px; /* Adjust the margin as needed */
     cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+}
+
+/*header alert announcment*/
+.custom-alert {
+    background-color: #19eb81; /* Change the background color */
+    color: #333; /* Change the text color */
+    padding: 15px; /* Adjust the padding */
+    border-radius: 0px; /* Add rounded corners */
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Adjust the font size */
+    font-family: "Iosevka Semibold";
+}
+
+/* Style for the dropdown container */
+.dropdown {
+    padding: 10px; /* Padding */
+    border-radius: 0px; /* No rounded corners */
+}
+
+/* Style for the dropdown select element */
+.styled-select select {
+    text-align: center;
+    width: 100%; /* Set the width to 100% */
+    padding: 7px; /* Padding */
+    border-radius: 0px; /* No rounded corners */
+    background-color: #f5f5f5; /* Background color */
+    font-size: 16px; /* Font size */
+}
+
+/* Style for the dropdown select options */
+.styled-select select option {
+    padding: 10px; /* Padding for each option */
+}
+
+
+
+/* Style for the dropdown heading */
+.h-green {
+    color: #19eb81; /* Text color */
+    font-size: 20px; /* Font size */
+    margin-bottom: 10px; /* Spacing below the heading */
 }
