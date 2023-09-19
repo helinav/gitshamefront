@@ -1,12 +1,26 @@
 <template>
-  <AnswerSlot/>
+  <div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        KüSIMUS + PILT
+        <QuestionImage/>
+      </div>
+      <div class="col">
+        <QuestionAnswer/>
+      </div>
+    </div>
+  </div>
+  </div>
 </template>
 <script>
-import AnswerSlot from "@/components/AnswerSlot.vue";
+
+import QuestionAnswer from "@/components/slot/QuestionAnswer.vue";
+import QuestionImage from "@/components/slot/QuestionImage.vue";
 
 export default {
   name: "PlayGameView",
-  components: {AnswerSlot},
+  components: {QuestionAnswer, QuestionImage},
   data() {
     return {
       playerGameId: 0,
@@ -24,7 +38,6 @@ export default {
   },
 
   methods: {
-
 
     sendQuestionInfoRequest() {
       this.$http.get("/next-question", {

@@ -21,10 +21,10 @@
 
 import LoginModal from "@/components/modal/LoginModal.vue";
 import router from "@/router";
+import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 export default {
-  components:{
-    LoginModal
-  },
+  components: {AlertSuccess, LoginModal},
+
   methods: {
     navigateToAccountView() {
       router.push({name: 'accountRoute'})

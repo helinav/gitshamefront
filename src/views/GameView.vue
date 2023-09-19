@@ -53,7 +53,6 @@ export default {
     handleGameRequestSuccessResponse() {
       this.successMessage = GAME_NAME_ADDED
       this.resetField()
-      //todo: peab pushima uuele lehele, kus saab lisada küsimusi/vastuseid
     },
 
     handleGameRequestErrorResponse() {
