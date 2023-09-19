@@ -19,8 +19,8 @@ export default {
 
 .corner-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  right: 30px;
   margin-bottom: 10px; /* Add margin to separate the two buttons */
+  top: 5%;
 }
 </style>
