@@ -1,6 +1,6 @@
 <template>
   <div class="special-container">
-    <button class="corner-button"> Logi välja </button>
+    <button class="corner-button">LOGI VÄLJA</button>
   </div>
 </template>
 
@@ -9,18 +9,3 @@ export default {
   name: "CornerButton",
 };
 </script>
-
-<style scoped>
-.button-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.corner-button {
-  position: absolute;
-  right: 30px;
-  margin-bottom: 10px; /* Add margin to separate the two buttons */
-  top: 5%;
-}
-</style>

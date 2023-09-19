@@ -1,6 +1,4 @@
-<head>
-<link rel="stylesheet" href="my-style.css"/>
-</head>
+
 <template>
   <div class="container text-center vh-100">
     <div>

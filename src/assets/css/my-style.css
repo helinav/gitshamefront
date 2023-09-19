@@ -3,7 +3,9 @@ body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
     text-align: center;
+    overflow-x: hidden; /* help to avoid bottom navigation slider */
     margin: 0 auto; /* Center the container horizontally */
+    /*margin-top: 10px;*/
 }
 
 /* Headers */
@@ -128,10 +130,11 @@ btn {
     transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
 }
 
+
 .page-container {
-    margin: 0 auto; /* Center the container horizontally */
+    margin: auto; /* Center the container horizontally */
     text-align: center;
-    /*width: 700px; !* Set your desired width in pixels *!*/
+    width: 700px; /* Set your desired width in pixels */
 }
 
 .hoverable-link {
@@ -268,26 +271,25 @@ container text-center {
     border: 3px solid #19eb81; /* Green border for the selected avatar */
 }
 
+/*corner button*/
+.special-container {
+    position: relative;
+    width: 100%;
+    min-height: 0px; /* Uncomment and adjust this property as needed */
+}
 
+.special-container .corner-button {
+    position: absolute;
+    top: 0;
+    right: 3%; /* You can adjust the right position as needed */
+    font-family: "Iosevka Medium";
+    color: #19eb81;
+    padding: 0;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+}
 
-
-/*logoutshortcutrightcorner*/
-/*.special-container{*/
-/*    position:relative;*/
-/*}*/
-
-/*.special-container.corner-button{*/
-/*    position:absolute;*/
-/*    top:-15;*/
-/*    right:25px;*/
-/*    font-family:"IosevkaSemibold";*/
-/*    color:#19eb81;*/
-/*    padding:0;*/
-/*    border:none;*/
-/*    background:none;*/
-/*    text-transform:uppercase;*/
-/*}*/
-
-/*.special-container.corner-button:hover{*/
-/*    color:#3466c0;!*Changethecoloronhover*!*/
-/*}*/
+.special-container .corner-button:hover {
+    color: #3466c0;
+}
