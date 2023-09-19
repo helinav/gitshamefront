@@ -6,19 +6,15 @@
   <div>
     <img src="../assets/pictures/menu_banner-default.png" width="400" alt="Logo"/>
   </div>
+  <AlertDanger :alert-message="errorResponse.message"/>
   <div class="row justify-content-center mt-5">
     <div class="col col-3">
       <GamesDropdown v-if="!isAdmin" ref="gamesDropDownRef" @event-update-selected-game-id="setGameRequestGameId"/>
-      <div class="padding-10"></div>
-      <div class="dropdown" v-if="isAdmin">
-        <h class="h-green">Admin valikud</h>
-      </div>
     </div>
-
     <div class="form-label">
-      <btn v-if="!isAdmin" @click="$router.push({name: 'startGameRoute'})" class="btn-red" type="button">Mängi</btn>
+      <btn v-if="!isAdmin" @click="startPlayerGame" class="btn-red" type="button">Mängi</btn>
     </div>
-    <div v-if="isAdmin" class="button-container" @click="playerGameRequest">
+    <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
       <btn class="corner-button">Lisa uus mäng</btn>
     </div>
     <div v-if="isAdmin" class="button-container" @click="">
@@ -48,10 +44,12 @@ import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
 import RulesModal from "@/components/modal/RulesModal.vue";
 import GamesDropdown from "@/components/GamesDropdown.vue";
+import {CHOOSE_A_GAME} from "@/assets/script/AlertMessage";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
 
 export default {
   name: "PlayView",
-  components: {GamesDropdown, RulesModal, CornerButton},
+  components: {AlertDanger, GamesDropdown, RulesModal, CornerButton},
   data() {
     return {
       showAlert: false,
@@ -62,6 +60,10 @@ export default {
       newGameRequest: {
         gameId: 0,
         playerId: 0
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
       }
     }
   },
@@ -90,15 +92,28 @@ export default {
       this.newGameRequest.gameId = selectedGameId
     },
 
-    playerGameRequest() {
-      this.$http.post("/gameplay", {
-            params: {
-              gameId: this.newGameRequest.gameId,
-              playerId: this.newGameRequest.playerId
-            }
-          }
+    startPlayerGame() {
+      this.resetErrorResponse()
+      if (this.newGameRequest.gameId > 0) {
+        router.push({name: 'startGameRoute'})
+      } else {
+        this.setErrorResponseMessage()
+      }
+    },
+
+    setErrorResponseMessage() {
+      this.alertMessage = ''
+      this.errorResponse.message = CHOOSE_A_GAME
+    },
+
+    resetErrorResponse() {
+      this.errorResponse.message = ''
+    },
+
+    newGameRequest() {
+      this.$http.post("/gameplay", this.newGameRequest
       ).then(response => {
-        router.push({name: 'gameRoute'})
+        this.newGameRequest = response.data
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
