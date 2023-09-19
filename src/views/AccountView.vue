@@ -124,7 +124,7 @@ export default {
       this.resetSuccessMessage()
       this.resetErrorMessage()
       if (this.mandatoryFieldsAreFilled()) {
-        this.sendAddAccountRequest();
+        this.sendAddAccountRequest()
       } else {
         this.errorResponse.message = FILL_MANDATORY_FIELDS
       }

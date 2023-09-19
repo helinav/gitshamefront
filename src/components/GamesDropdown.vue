@@ -1,7 +1,7 @@
 <template>
   <select v-model="selectedGameId" @change="emitSelectedGameId" class="form-select" aria-label="Default select example">
     <option selected :value="0">Vali mäng</option>
-    <option v-for="game in games" :value="game.gameId" :key="game.gameId" >{{ game.gameName }}</option>
+    <option v-for="game in games" :value="game.gameId" :key="game.gameId" >{{ game.name }}</option>
   </select>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
       games: [
         {
           gameId: 0,
-          gameName: ''
+          name: ''
         }
       ]
     }

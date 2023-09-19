@@ -46,6 +46,7 @@ import RulesModal from "@/components/modal/RulesModal.vue";
 import GamesDropdown from "@/components/GamesDropdown.vue";
 import {CHOOSE_A_GAME} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
+import {useRoute} from "vue-router";
 
 export default {
   name: "PlayView",
@@ -59,7 +60,7 @@ export default {
       isAdmin: false,
       newGameRequest: {
         gameId: 0,
-        playerId: 0
+        playerId: Number(sessionStorage.getItem('playerId'))
       },
       errorResponse: {
         message: '',
@@ -79,6 +80,7 @@ export default {
     }
   },
   methods: {
+
     openModal() {
       this.$refs.rulesModalRef.$refs.modalRef.openModal()
     },
@@ -90,6 +92,8 @@ export default {
     updateNavMenu() {
       this.isLoggedIn = sessionStorage.getItem('userId') !== null
       this.isAdmin = sessionStorage.getItem('roleName') === ADMIN
+      this.newGameRequest.playerId = Number(sessionStorage.getItem('playerId'))
+      this.playerGameId = sessionStorage.getItem('playerGameId')
     },
 
     showTempAlert() {
@@ -103,16 +107,6 @@ export default {
       this.newGameRequest.gameId = selectedGameId
     },
 
-
-    startPlayerGame() {
-      this.resetErrorResponse()
-      if (this.newGameRequest.gameId > 0) {
-        this.newQuestionRequest()
-      } else {
-        this.setErrorResponseMessage()
-      }
-    },
-
     setErrorResponseMessage() {
       this.alertMessage = ''
       this.errorResponse.message = CHOOSE_A_GAME
@@ -122,29 +116,25 @@ export default {
       this.errorResponse.message = ''
     },
 
-    newGameRequest() {
+    startPlayerGame() {
+      this.resetErrorResponse()
+      if (this.newGameRequest.gameId > 0) {
+        this.sendGameRequest()
+      } else {
+        this.setErrorResponseMessage()
+      }
+    },
+
+    sendGameRequest() {
       this.$http.post("/gameplay", this.newGameRequest
       ).then(response => {
         this.playerGameId = response.data
+        sessionStorage.setItem('playerGameId', this.playerGameId)
+        router.push({name: 'playGameRoute'})
       }).catch(error => {
-        const errorResponseBody = error.response.data
+        router.push({name: 'errorRoute'})
       })
     },
-
-    newQuestionRequest() {
-      this.$http.get("/next-question", {
-            params: {
-              playerGameId: this.playerGameId,
-            }
-          }
-      ).then(response => {
-        this.questionInfo = response.data
-        router.push({name: 'startGameRoute'})
-      }).catch(error => {
-        const errorResponseBody = error.response.data
-      })
-    },
-
 
     executeLogOut() {
       sessionStorage.clear()
