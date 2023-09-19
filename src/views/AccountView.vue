@@ -2,15 +2,21 @@
   <div class="container text-center vh-100">
     <div>
       <img src="../assets/pictures/menu_banner-makeaccount.png" width="250" alt="Logo"/>
+      <AlertSuccess :alert-message="successMessage"/>
+      <AlertDanger :alert-message="errorResponse.message"/>
     </div>
     <div>
       <h class="h-green"> LOO UUS KASUTAJA</h>
       <div class="padding-25"></div>
       <div class="mb-2">
         <label class="form-label">VALI AVATAR!</label>
-        <div>
-          <div v-for="avatar in avatars" :key="avatar.avatars">
-          <AvatarImage :image-data-base64="avatars" @click=""/>
+        <div class="avatar-gallery">
+          <div class="avatar-item">
+            <div v-for="avatar in avatars" :key="avatar.imageId"
+                 :class="{'selected': avatar === selectedAvatar}"
+                 @click="selectAvatar(avatar)">
+              <AvatarImage :image-data-base64="avatar.imageData" :alt="avatar.imageId"/>
+            </div>
           </div>
         </div>
       </div>
@@ -37,9 +43,7 @@
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
     </form>
-    <btn @click="addAccount" type="submit">Loo kasutaja</btn>
-    <AlertSuccess :alert-message="successMessage"/>
-    <AlertDanger :alert-message="errorResponse.message"/>
+    <button @click="addAccount" type="submit">Loo kasutaja</button>
   </div>
 </template>
 
@@ -56,10 +60,12 @@ export default {
   components: {AvatarImage, AlertDanger, AlertSuccess},
   data() {
     return {
-      avatars: {
-        imageId: 0,
-        imageData: ''
-      },
+      avatars: [
+        {
+          imageId: 0,
+          imageData: ''
+        }
+      ],
       userInfo: {
         username: '',
         password: '',
@@ -70,12 +76,12 @@ export default {
       errorResponse: {
         message: '',
         errorCode: 0
-      }
+      },
+      selectedAvatar: null
     }
   },
 
   methods: {
-
     setAvatarRequestImageData(imageDataBase64) {
       this.avatars.imageData = imageDataBase64
     },
@@ -84,8 +90,39 @@ export default {
       this.successMessage = ACCOUNT_ADDED
     },
 
+    setEmailErrorMessage() {
+      this.errorResponse.errorCode = EMAIL_ALREADY_EXISTS
+      this.errorResponse.message = 'Selline emaili aadress on juba süsteemis olemas';
+    },
+
+    setUsernameErrorMessage() {
+      this.errorResponse.errorCode = USERNAME_ALREADY_EXISTS
+      this.errorResponse.message = 'Selline kasutajanimi on süsteemis juba olemas'
+    },
+
+    selectAvatar(avatar) {
+      this.selectedAvatar = avatar
+      this.userInfo.imageId = avatar.imageId
+    },
+
+    resetSuccessMessage() {
+      this.successMessage = ''
+    },
+
+    resetErrorMessage() {
+      this.errorResponse.message = ''
+    },
+
+    resetAllFields() {
+      this.userInfo.username = '',
+      this.userInfo.password = '',
+      this.userInfo.email = '',
+      this.userInfo.imageId = ''
+    },
 
     addAccount() {
+      this.resetSuccessMessage()
+      this.resetErrorMessage()
       if (this.mandatoryFieldsAreFilled()) {
         this.sendAddAccountRequest();
       } else {
@@ -103,7 +140,7 @@ export default {
     },
 
     sendAddAccountRequest() {
-      this.$http.post("/account", {
+      this.$http.post("/account", this.userInfo, {
             params: {
               username: this.userInfo.username,
               password: this.userInfo.password,
@@ -113,8 +150,9 @@ export default {
           }
       ).then(response => {
         this.handleAddAccountSuccessResponse()
+        this.resetAllFields()
       }).catch(error => {
-
+        this.handleAddAccountErrorResponse()
       })
     },
 
@@ -122,11 +160,28 @@ export default {
       this.successMessage = ACCOUNT_ADDED
     },
 
+    handleAddAccountErrorResponse() {
+      if (this.errorResponse.errorCode === EMAIL_ALREADY_EXISTS) {
+        this.setEmailErrorMessage();
+      } else {
+        this.setUsernameErrorMessage();
+      }
+    },
 
+    getAvatars() {
+      this.$http.get("/account")
+          .then(response => {
+            this.avatars = response.data
+          })
+          .catch(error => {
+            router.push({name: 'errorRoute'})
+          })
+    },
 
-
-
-
+  },
+  beforeMount() {
+    this.getAvatars()
+    this.resetAllFields()
   }
 
 }
