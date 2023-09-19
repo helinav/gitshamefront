@@ -10,14 +10,15 @@
       <div class="padding-25"></div>
       <div class="mb-2">
         <label class="form-label">VALI AVATAR!</label>
-        <div class="avatar-gallery">
-          <div class="avatar-item">
-            <div v-for="avatar in avatars" :key="avatar.imageId"
-                 :class="{'selected': avatar === selectedAvatar}"
-                 @click="selectAvatar(avatar)">
-              <AvatarImage :image-data-base64="avatar.imageData" :alt="avatar.imageId"/>
-            </div>
-          </div>
+        <div class="avatar-container">
+          <img
+              v-for="avatar in avatars"
+              :key="avatar.imageId"
+              :src="avatar.imageData"
+              :alt="avatar.imageId"
+              @click="selectAvatar(avatar)"
+              :class="{ selected: avatar === selectedAvatar }"
+          />
         </div>
       </div>
     </div>
@@ -40,10 +41,11 @@
         <input v-model="this.userInfo.email" type="email" class="form-control narrow-input"
                placeholder="example@example.com" id="exampleInputEmail1"
                aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div class="padding-10"></div>
+        <!--        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
       </div>
     </form>
-    <button @click="addAccount" type="submit">Loo kasutaja</button>
+    <btn @click="addAccount" type="">Loo kasutaja</btn>
   </div>
 </template>
 
