@@ -6,6 +6,7 @@ import ErrorView from "@/views/ErrorView.vue";
 import LoginView from "@/views/LoginView.vue";
 import GameView from "@/views/GameView.vue";
 import AvatarView from "@/views/AvatarView.vue";
+import StartGameView from "@/views/StartGameView.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/avatar',
     name: 'avatarRoute',
     component: AvatarView
+  },
+  {
+    path: '/start-game',
+    name: 'startGameRoute',
+    component: StartGameView
   }
 
 ]

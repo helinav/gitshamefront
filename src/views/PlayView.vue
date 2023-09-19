@@ -8,26 +8,17 @@
   </div>
   <div class="row justify-content-center mt-5">
     <div class="col col-3">
-      <div class="dropdown" v-if="!isAdmin">
-        <h class="h-green">Vali mäng!</h>
-        <div class="padding-25"></div>
-        <div class="styled-select">
-          <select id="select" name="select" style="width: 64%;">
-            <option value="CSS">Java ubade espresso</option>
-            <option value="Javascript">Javascript</option>
-            <option value="HTML">HTML</option>
-          </select>
-        </div>
-      </div>
+      <GamesDropdown v-if="!isAdmin" ref="gamesDropDownRef" @event-update-selected-game-id="setGameRequestGameId"/>
       <div class="padding-10"></div>
       <div class="dropdown" v-if="isAdmin">
         <h class="h-green">Admin valikud</h>
       </div>
     </div>
+
     <div class="form-label">
-      <btn v-if="!isAdmin" @click="$router.push({name: 'playGameRoute'})" class="btn-red" type="button">Mängi</btn>
+      <btn v-if="!isAdmin" @click="$router.push({name: 'startGameRoute'})" class="btn-red" type="button">Mängi</btn>
     </div>
-    <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
+    <div v-if="isAdmin" class="button-container" @click="playerGameRequest">
       <btn class="corner-button">Lisa uus mäng</btn>
     </div>
     <div v-if="isAdmin" class="button-container" @click="">
@@ -56,17 +47,22 @@ import CornerButton from "@/components/button/CornerButton.vue";
 import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
 import RulesModal from "@/components/modal/RulesModal.vue";
+import GamesDropdown from "@/components/GamesDropdown.vue";
 
 export default {
   name: "PlayView",
-  components: {RulesModal, CornerButton},
+  components: {GamesDropdown, RulesModal, CornerButton},
   data() {
     return {
       showAlert: false,
       alertMessage: "Oled sisse logitud!",
       roleName: sessionStorage.getItem('roleName'),
       isLoggedIn: true,
-      isAdmin: false
+      isAdmin: false,
+      newGameRequest: {
+        gameId: 0,
+        playerId: 0
+      }
     }
   },
   methods: {
@@ -82,6 +78,7 @@ export default {
       this.isLoggedIn = sessionStorage.getItem('userId') !== null
       this.isAdmin = sessionStorage.getItem('roleName') === ADMIN
     },
+
     showTempAlert() {
       this.showAlert = true
       setTimeout(() => {
@@ -89,14 +86,34 @@ export default {
       }, 3000);
     },
 
+    setGameRequestGameId(selectedGameId) {
+      this.newGameRequest.gameId = selectedGameId
+    },
+
+    playerGameRequest() {
+      this.$http.post("/gameplay", {
+            params: {
+              gameId: this.newGameRequest.gameId,
+              playerId: this.newGameRequest.playerId
+            }
+          }
+      ).then(response => {
+        router.push({name: 'gameRoute'})
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+
     executeLogOut() {
       sessionStorage.clear()
       router.push({name: 'homeRoute'})
     },
   },
+
   mounted() {
     this.showTempAlert()
   },
+
   beforeMount() {
     this.isAdmin = true
     this.updateNavMenu()

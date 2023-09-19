@@ -46,7 +46,8 @@ export default {
       password: '',
       loginResponse: {
         userId: 0,
-        roleName: ''
+        roleName: '',
+        playerId: 0
       },
       errorResponse: {
         message: '',
@@ -85,6 +86,7 @@ export default {
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
         sessionStorage.setItem('roleName', this.loginResponse.roleName)
+        sessionStorage.setItem('playerId', this.loginResponse.playerId)
         this.$refs.modalRef.closeModal()
         router.push({name: 'playRoute'})
       }).catch(error => {
