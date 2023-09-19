@@ -64,6 +64,17 @@ export default {
       errorResponse: {
         message: '',
         errorCode: 0
+      },
+      playerGameId: 0,
+      questionInfo: {
+        questionId: 0,
+        questionText: '',
+        answerExplanation: '',
+        typeName: '',
+        imageData: '',
+        strikeCount: 0,
+        questionNumber: 0,
+        totalNumberOfQuestions: 0
       }
     }
   },
@@ -92,10 +103,11 @@ export default {
       this.newGameRequest.gameId = selectedGameId
     },
 
+
     startPlayerGame() {
       this.resetErrorResponse()
       if (this.newGameRequest.gameId > 0) {
-        router.push({name: 'startGameRoute'})
+        this.newQuestionRequest()
       } else {
         this.setErrorResponseMessage()
       }
@@ -113,11 +125,26 @@ export default {
     newGameRequest() {
       this.$http.post("/gameplay", this.newGameRequest
       ).then(response => {
-        this.newGameRequest = response.data
+        this.playerGameId = response.data
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
     },
+
+    newQuestionRequest() {
+      this.$http.get("/next-question", {
+            params: {
+              playerGameId: this.playerGameId,
+            }
+          }
+      ).then(response => {
+        this.questionInfo = response.data
+        router.push({name: 'startGameRoute'})
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+
 
     executeLogOut() {
       sessionStorage.clear()
