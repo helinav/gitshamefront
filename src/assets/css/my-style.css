@@ -1,4 +1,3 @@
-/*Gistshame default fondid, fontide suursed ja värvid */
 body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
@@ -6,60 +5,46 @@ body {
     overflow-x: hidden;
     margin: auto;
     margin-top: 0px;
-
 }
 
-/*nav {*/
-/*    height: 0px; !* Set the desired height in pixels or any other unit *!*/
-/*    background-color: #232323; !* Background color for the navbar *!*/
-/*}*/
-
-/* Headers */
+/*titles*/
 h {
     color: #ffffff;
     font-family: Iosevka, sans-serif;
     font-size: 25px;
     margin-bottom: 25px;
 }
-
-
 .h-green {
     color: #19eb81;
 }
-
 .h-blue {
     color: #3466c0;
 }
-
 .h-red {
     color: #f72f35;
 }
-
 .h-black {
     color: #232323;
 }
 
-/* Paragraphs */
+/* paragraphs */
 p {
     font-family: 'ParagraphFont', Iosevka, sans-serif;
     color: #FFFFFF; /* Valge */
     font-size: 15px;
     line-height: 10px;
 }
-
 .p-green {
     color: #19eb81;
 }
-
 .p-blue {
     color: #3466c0;
 }
-
 .p-red {
     color: #f72f35;
 }
 
-/* Buttons */
+/* buttons */
 btn {
     background: #19eb81;
     border-bottom: 3px inset rgba(0, 0, 0, .5);
@@ -84,7 +69,6 @@ btn {
         background: #3466c0;
     }
 }
-
 .btn-red {
     background-color: #f8585d;
     color: #FFFFFF;
@@ -94,7 +78,6 @@ btn {
         background: #f72f35;
     }
 }
-
 .btn-gold {
     background-color: #f7cb32;
     color: #232323;
@@ -106,7 +89,7 @@ btn {
 }
 
 
-/* Padding */
+/* special paddings */
 .padding-10 {
     padding-bottom: 10px;
 }
@@ -114,20 +97,17 @@ btn {
 .padding-17 {
     padding-bottom: 17px;
 }
-
 .padding-25 {
     padding-bottom: 25px;
 }
-
 .padding-50 {
     padding-bottom: 50px;
 }
-
 .padding-60 {
     padding-bottom: 60px;
 }
 
-/* Style for the image link */
+/* image link */
 .image-link {
     text-decoration: none; /* Remove underline on hover (optional) */
     position: relative; /* Required for pseudo-elements */
@@ -136,7 +116,7 @@ btn {
     transition: transform 0.5s ease-in-out;
 }
 
-/* Hover effect for the image link */
+/* image link hover effect */
 .image-link:hover {
     transform: scale(1.2); /* Increase the size on hover (adjust the scale factor as needed) */
 }
@@ -293,7 +273,7 @@ container text-center {
 }
 .special-container .corner-button {
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 3%; /* You can adjust the right position as needed */
     font-family: "Iosevka Medium";
     color: #19eb81;
@@ -307,3 +287,22 @@ container text-center {
     color: #3466c0;
 }
 
+
+.custom-leaderboard-modal {
+    background-color: #f7cb32; /* Replace with your desired background color */
+    /* Add any other custom styles you want to apply */
+}
+
+
+.custom-alert {
+    background-color: #19eb81; /* Set your desired background color */
+    text-align: center;
+    color: #232323; /* Text color */
+    padding: 10px; /* Adjust padding as needed */
+    text-align: center; /* Align text to the left */
+    position: fixed;
+    top: 0; /* Align to the top */
+    left: 0;
+    right: 0;
+    z-index: 999; /* Set z-index to make it appear on top of other content */
+}

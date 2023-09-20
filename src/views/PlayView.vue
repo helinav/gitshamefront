@@ -27,8 +27,9 @@
 
     <div class="row justify-content-center" v-if="!isAdmin">
       <div class="d-flex justify-content-center">
-        <div class="form-label" style="margin-left: 3px;">
-          <btn class="btn-gold">Autahvel</btn>
+        <div class="form-label">
+          <btn @click="openModal" class="btn-gold">Autahvel</btn>
+          <LeaderboardModal ref="leaderboardModalRef"></LeaderboardModal>
         </div>
         <div class="form-label">
           <btn @click="openModal">Reeglid</btn>
@@ -44,6 +45,7 @@ import CornerButton from "@/components/button/CornerButton.vue";
 import {ADMIN} from "@/assets/script/Role";
 import router from "@/router";
 import RulesModal from "@/components/modal/RulesModal.vue";
+import LeaderboardModal from "@/components/modal/LeaderboardModal.vue";
 import GamesDropdown from "@/components/GamesDropdown.vue";
 import {CHOOSE_A_GAME} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
@@ -51,7 +53,7 @@ import {useRoute} from "vue-router";
 
 export default {
   name: "PlayView",
-  components: {AlertDanger, GamesDropdown, RulesModal, CornerButton},
+  components: {AlertDanger, GamesDropdown, LeaderboardModal, RulesModal, CornerButton},
   data() {
     return {
       showAlert: false,
@@ -84,10 +86,13 @@ export default {
 
     openModal() {
       this.$refs.rulesModalRef.$refs.modalRef.openModal()
+      this.$refs.leaderboardModalRef.$refs.modalRef.openModal()
+
     },
 
     closeModal() {
       this.$refs.rulesModalRef.$refs.modalRef.closeModal()
+      this.$refs.leaderboardModalRef.$refs.modalRef.closeModal()
     },
 
     updateNavMenu() {
