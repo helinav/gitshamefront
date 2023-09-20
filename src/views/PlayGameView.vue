@@ -2,14 +2,19 @@
   <div>
     <div>
       <div>
-        <h4>KÜSIMUS JA PILT</h4>
+        <h4>KÜSIMUS JA PILT questionInfost</h4>
+        <div>
+
+        </div>
       </div>
     </div>
+
     <QuestionAnswer>
     <template #body>
 
     </template>
     </QuestionAnswer>
+
     <div class="row mt-5">
       <div class="col">PROGRESSIRIBA</div>
       <div class="col">ÕIGE VASTUSE SELGITUS</div>
@@ -45,7 +50,6 @@ export default {
   },
 
   methods: {
-
 
     sendQuestionInfoRequest() {
       this.$http.get("/next-question", {

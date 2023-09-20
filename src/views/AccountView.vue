@@ -154,6 +154,7 @@ export default {
         this.handleAddAccountSuccessResponse()
         this.resetAllFields()
       }).catch(error => {
+        this.errorResponse = error.response.data
         this.handleAddAccountErrorResponse()
       })
     },

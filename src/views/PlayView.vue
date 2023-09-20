@@ -128,7 +128,8 @@ export default {
       this.$http.post("/gameplay", this.newGameRequest
       ).then(response => {
         const playerGameId = response.data.playerGameId
-        router.push({name: 'playGameRoute', query: {playerGameId: playerGameId}})
+        router.push({
+          name: 'playGameRoute', query: {playerGameId: playerGameId}})
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })

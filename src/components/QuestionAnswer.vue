@@ -4,14 +4,50 @@
     <div class="col-3">
       <slot name="body">
         Vastusevariandid vastavalt typeName'ile
+        <div v-if="questionInfo.typeName === 'radio'">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1"></label>
+          </div>
+        </div>
+
+        <div v-else-if="questionInfo.typeName === 'checkbox'">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Vastus
+            </label>
+          </div>
+        </div>
+
+        <div v-else-if="questionInfo.typeName === 'textbox'">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Kirjuta vastus</label>
+          </div>
+        </div>
+
+        <div v-else-if="questionInfo.typeName === 'sequence'">
+          <div class="container">
+            <h1>Pane õigesse järjekorda</h1>
+            <ul class="list-group" id="sortable-list">
+              <li class="list-group-item">Item 1</li>
+              <li class="list-group-item">Item 2</li>
+              <li class="list-group-item">Item 3</li>
+              <li class="list-group-item">Item 4</li>
+            </ul>
+          </div>
+        </div>
       </slot>
     </div>
 
   </div>
 </template>
 <script>
+
 export default {
   name: 'QuestionAnswer',
+
   data() {
     return {
       questionInfo: {
@@ -62,7 +98,7 @@ export default {
     newSelectAnswer() {
       this.$http.get("/answers/select", {
             params: {
-              questionId: this.questionId
+              questionId: this.questionInfo.questionId
             }
           }
       ).then(response => {
@@ -75,7 +111,7 @@ export default {
     newTextBoxAnswer() {
       this.$http.get("/answers/textbox", {
             params: {
-              questionId: this.questionId
+              questionId: this.questionInfo.questionId
             }
           }
       ).then(response => {
@@ -88,7 +124,7 @@ export default {
     newSequenceAnswer() {
       this.$http.get("/answers/sequence", {
             params: {
-              questionId: this.questionId
+              questionId: this.questionInfo.questionId
             }
           }
       ).then(response => {
@@ -98,6 +134,10 @@ export default {
       })
     },
 
+  },
+
+  mounted() {
+    this.showQuestionAnswers()
   }
 }
 </script>
