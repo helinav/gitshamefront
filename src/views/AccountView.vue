@@ -116,9 +116,9 @@ export default {
     },
 
     resetAllFields() {
-      this.userInfo.username = '',
-      this.userInfo.password = '',
-      this.userInfo.email = '',
+      this.userInfo.username = ''
+      this.userInfo.password = ''
+      this.userInfo.email = ''
       this.userInfo.imageId = ''
     },
 
@@ -153,6 +153,9 @@ export default {
       ).then(response => {
         this.handleAddAccountSuccessResponse()
         this.resetAllFields()
+        setTimeout(() => {
+          router.push({name: 'loginRoute'})
+        }, 2000)
       }).catch(error => {
         this.errorResponse = error.response.data
         this.handleAddAccountErrorResponse()
@@ -188,6 +191,4 @@ export default {
   }
 
 }
-
 </script>
-
