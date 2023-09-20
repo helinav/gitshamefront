@@ -1,6 +1,5 @@
 <template>
-  <nav>
-  </nav>
+  <nav></nav>
   <router-view/>
 </template>
 <script>
@@ -17,12 +16,12 @@
 }
 
 nav {
-  padding: 30px;
+  padding: 20px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #f72f35;
 }
 
 nav a.router-link-exact-active {

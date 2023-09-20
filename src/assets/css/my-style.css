@@ -3,10 +3,16 @@ body {
     background-color: #232323;
     font-family: 'DefaultFont', Iosevka, sans-serif;
     text-align: center;
-    overflow-x: hidden; /* help to avoid bottom navigation slider */
-    margin: 0 auto; /* Center the container horizontally */
-    /*margin-top: 10px;*/
+    overflow-x: hidden;
+    margin: auto;
+    margin-top: 0px;
+
 }
+
+/*nav {*/
+/*    height: 0px; !* Set the desired height in pixels or any other unit *!*/
+/*    background-color: #232323; !* Background color for the navbar *!*/
+/*}*/
 
 /* Headers */
 h {
@@ -15,6 +21,7 @@ h {
     font-size: 25px;
     margin-bottom: 25px;
 }
+
 
 .h-green {
     color: #19eb81;
@@ -133,6 +140,7 @@ btn {
 
 .page-container {
     margin: auto; /* Center the container horizontally */
+    margin-top: 0px;
     text-align: center;
     width: 700px; /* Set your desired width in pixels */
 }
@@ -254,21 +262,23 @@ container text-center {
 .form-control::placeholder {
     color: #C0C0C0;
     border-radius: 0;
-
 }
 
 .avatar-container img {
     width: 80px; /* Adjust the size as desired */
     height: 80px; /* Keep the same value as width to make them perfect circles */
     border-radius: 50%; /* Makes them perfect circles */
-    margin: 10px; /* Adjust the margin as needed for spacing */
+    margin: 5px; /* Adjust the margin as needed for spacing */
     cursor: pointer;
+    box-sizing: border-box; /* Include border in element dimensions */
+    transition: transform 0.2s ease-in-out; /* Add a smooth transition */
 }
-
 
 /* Highlight the selected avatar */
 .avatar-container img.selected {
     border: 3px solid #19eb81; /* Green border for the selected avatar */
+    margin: 5px; /* Maintain the same margin for selected images */
+    transform: scale(1.1); /* Zoom in by 10% (adjust as needed) */
 }
 
 /*corner button*/
@@ -277,14 +287,13 @@ container text-center {
     width: 100%;
     min-height: 0px; /* Uncomment and adjust this property as needed */
 }
-
 .special-container .corner-button {
     position: absolute;
     top: 0;
     right: 3%; /* You can adjust the right position as needed */
     font-family: "Iosevka Medium";
     color: #19eb81;
-    padding: 0;
+    padding: 0px;
     border: none;
     background: none;
     text-transform: uppercase;
