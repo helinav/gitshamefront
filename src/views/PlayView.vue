@@ -12,6 +12,7 @@
       <GamesDropdown v-if="!isAdmin" ref="gamesDropDownRef" @event-update-selected-game-id="setGameRequestGameId"/>
     </div>
     <div class="form-label">
+      <div class="padding-17"></div>
       <btn v-if="!isAdmin" @click="startPlayerGame" class="btn-red" type="button">Mängi</btn>
     </div>
     <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
@@ -27,7 +28,7 @@
     <div class="row justify-content-center" v-if="!isAdmin">
       <div class="d-flex justify-content-center">
         <div class="form-label" style="margin-left: 3px;">
-          <btn class="btn-gold">Edetabel</btn>
+          <btn class="btn-gold">Autahvel</btn>
         </div>
         <div class="form-label">
           <btn @click="openModal">Reeglid</btn>
@@ -150,4 +151,3 @@ export default {
   }
 }
 </script>
-

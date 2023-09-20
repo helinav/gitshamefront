@@ -1,8 +1,11 @@
 <template>
-  <select v-model="selectedGameId" @change="emitSelectedGameId" class="form-select" aria-label="Default select example">
+  <div style="display: flex; justify-content: center;">
+  <select v-model="selectedGameId" @change="emitSelectedGameId"
+          class="form-select" aria-label="Default select example" style="width: 280px; border-radius: 0;">
     <option selected :value="0">Vali mäng</option>
     <option v-for="game in games" :value="game.gameId" :key="game.gameId" >{{ game.name }}</option>
   </select>
+    </div>
 </template>
 <script>
 import router from "@/router";

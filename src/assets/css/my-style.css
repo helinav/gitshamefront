@@ -110,6 +110,10 @@ btn {
 .padding-10 {
     padding-bottom: 10px;
 }
+/* Padding */
+.padding-17 {
+    padding-bottom: 17px;
+}
 
 .padding-25 {
     padding-bottom: 25px;
@@ -302,3 +306,4 @@ container text-center {
 .special-container .corner-button:hover {
     color: #3466c0;
 }
+
