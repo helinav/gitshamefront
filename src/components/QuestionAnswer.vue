@@ -1,13 +1,12 @@
 <template>
   <div class="row justify-content-center mt-5">
-    <div class=" col col-3">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Default checkbox
-        </label>
-      </div>
+
+    <div class="col-3">
+      <slot name="body">
+        Vastusevariandid vastavalt typeName'ile
+      </slot>
     </div>
+
   </div>
 </template>
 <script>
@@ -15,7 +14,17 @@ export default {
   name: 'QuestionAnswer',
   data() {
     return {
-      questionId: 0,
+      questionInfo: {
+        questionId: 0,
+        questionText: '',
+        answerExplanation: '',
+        typeName: '',
+        imageData: '',
+        strikeCount: 0,
+        questionNumber: 0,
+        totalNumberOfQuestions: 0,
+        isGameOver: true
+      },
       selectResponse: [
         {
           answerId: 0,
@@ -40,7 +49,17 @@ export default {
 
   methods: {
 
-    newSelectableAnswer() {
+    showQuestionAnswers() {
+      if (this.questionInfo.typeName === 'radio' || this.questionInfo.typeName === 'checkbox') {
+        this.newSelectAnswer()
+      } else if (this.questionInfo.typeName === 'textbox') {
+        this.newTextBoxAnswer();
+      } else {
+        this.newSequenceAnswer()
+      }
+    },
+
+    newSelectAnswer() {
       this.$http.get("/answers/select", {
             params: {
               questionId: this.questionId

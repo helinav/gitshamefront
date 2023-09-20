@@ -1,28 +1,31 @@
 <template>
   <div>
-    <div class="container text-center">
-      <div class="row">
-        <div class="col">
-          KüSIMUS + PILT
-          <QuestionImage/>
-        </div>
-        <div class="col">
-          <QuestionAnswer/>
-        </div>
+    <div>
+      <div>
+        <h4>KÜSIMUS JA PILT</h4>
       </div>
+    </div>
+    <QuestionAnswer>
+    <template #body>
+
+    </template>
+    </QuestionAnswer>
+    <div class="row mt-5">
+      <div class="col">PROGRESSIRIBA</div>
+      <div class="col">ÕIGE VASTUSE SELGITUS</div>
     </div>
   </div>
 </template>
 <script>
 
-import QuestionAnswer from "@/components/slot/QuestionAnswer.vue";
-import QuestionImage from "@/components/slot/QuestionImage.vue";
 import router from "@/router";
 import {useRoute} from "vue-router";
+import QuestionAnswer from "@/components/QuestionAnswer.vue";
 
 export default {
   name: "PlayGameView",
-  components: {QuestionAnswer, QuestionImage},
+  components: {QuestionAnswer},
+
   data() {
     return {
       playerGameId: Number(useRoute().query.playerGameId),
@@ -34,12 +37,15 @@ export default {
         imageData: '',
         strikeCount: 0,
         questionNumber: 0,
-        totalNumberOfQuestions: 0
+        totalNumberOfQuestions: 0,
+        isGameOver: true
       },
+
     }
   },
 
   methods: {
+
 
     sendQuestionInfoRequest() {
       this.$http.get("/next-question", {
@@ -48,7 +54,7 @@ export default {
             }
           }
       ).then(response => {
-        this.questionInfo  = response.data
+        this.questionInfo = response.data
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
