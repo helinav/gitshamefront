@@ -93,7 +93,6 @@ export default {
       this.isLoggedIn = sessionStorage.getItem('userId') !== null
       this.isAdmin = sessionStorage.getItem('roleName') === ADMIN
       this.newGameRequest.playerId = Number(sessionStorage.getItem('playerId'))
-      this.playerGameId = sessionStorage.getItem('playerGameId')
     },
 
     showTempAlert() {
@@ -128,9 +127,8 @@ export default {
     sendGameRequest() {
       this.$http.post("/gameplay", this.newGameRequest
       ).then(response => {
-        this.playerGameId = response.data
-        sessionStorage.setItem('playerGameId', this.playerGameId)
-        router.push({name: 'playGameRoute'})
+        const playerGameId = response.data.playerGameId
+        router.push({name: 'playGameRoute', query: {playerGameId: playerGameId}})
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
