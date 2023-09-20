@@ -1,29 +1,31 @@
 <template>
   <div>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        KüSIMUS + PILT
-        <QuestionImage/>
-      </div>
-      <div class="col">
-        <QuestionAnswer/>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          KüSIMUS + PILT
+          <QuestionImage/>
+        </div>
+        <div class="col">
+          <QuestionAnswer/>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
 
 import QuestionAnswer from "@/components/slot/QuestionAnswer.vue";
 import QuestionImage from "@/components/slot/QuestionImage.vue";
+import router from "@/router";
+import {useRoute} from "vue-router";
 
 export default {
   name: "PlayGameView",
   components: {QuestionAnswer, QuestionImage},
   data() {
     return {
-      playerGameId: 0,
+      playerGameId: Number(useRoute().query.playerGameId),
       questionInfo: {
         questionId: 0,
         questionText: '',
@@ -33,7 +35,7 @@ export default {
         strikeCount: 0,
         questionNumber: 0,
         totalNumberOfQuestions: 0
-      }
+      },
     }
   },
 
@@ -46,9 +48,9 @@ export default {
             }
           }
       ).then(response => {
-        this.questionInfo = response.data
+        this.questionInfo  = response.data
       }).catch(error => {
-        const errorResponseBody = error.response.data
+        router.push({name: 'errorRoute'})
       })
     },
   },
@@ -56,6 +58,7 @@ export default {
   mounted() {
     this.sendQuestionInfoRequest()
   }
+
 }
 </script>
 
