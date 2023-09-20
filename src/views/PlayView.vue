@@ -28,11 +28,11 @@
     <div class="row justify-content-center" v-if="!isAdmin">
       <div class="d-flex justify-content-center">
         <div class="form-label">
-          <btn @click="openModal" class="btn-gold">Autahvel</btn>
+          <btn class="btn-gold" @click="openModal('leaderboard')">Autahvel</btn>
           <LeaderboardModal ref="leaderboardModalRef"></LeaderboardModal>
         </div>
         <div class="form-label">
-          <btn @click="openModal">Reeglid</btn>
+          <btn @click="openModal('rules')">Reeglid</btn>
           <RulesModal ref="rulesModalRef"></RulesModal>
         </div>
       </div>
@@ -84,10 +84,12 @@ export default {
   },
   methods: {
 
-    openModal() {
-      this.$refs.rulesModalRef.$refs.modalRef.openModal()
-      this.$refs.leaderboardModalRef.$refs.modalRef.openModal()
-
+    openModal(modalType) {
+      if (modalType === 'rules') {
+        this.$refs.rulesModalRef.$refs.modalRef.openModal()
+      } else if (modalType === 'leaderboard') {
+        this.$refs.leaderboardModalRef.$refs.modalRef.openModal()
+      }
     },
 
     closeModal() {

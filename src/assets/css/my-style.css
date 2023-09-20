@@ -193,6 +193,7 @@ btn {
     align-items: center;
 }
 
+
 .modal-footer {
     background-color: #19eb81;
     border: none;
@@ -288,12 +289,6 @@ container text-center {
 }
 
 
-.custom-leaderboard-modal {
-    background-color: #f7cb32; /* Replace with your desired background color */
-    /* Add any other custom styles you want to apply */
-}
-
-
 .custom-alert {
     background-color: #19eb81; /* Set your desired background color */
     text-align: center;
@@ -306,3 +301,12 @@ container text-center {
     right: 0;
     z-index: 999; /* Set z-index to make it appear on top of other content */
 }
+
+/*!*leaderboard*!*/
+/*modal. custom-modal {*/
+/*    background-color: #f7cb32;*/
+/*    border-radius: 8px;*/
+/*    padding: 20px;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
+/*}*/
+

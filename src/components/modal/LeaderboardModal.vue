@@ -1,13 +1,9 @@
 <template>
-  <Modal close-button-name="OK" ref="modalRef">
+  <Modal close-button-name="APLAUS" ref="modalRef">
     <template #header>
       <h class="h-black">Parimad mängijad!</h>
     </template>
-    <template #body class="p-modal-long-text">
-      <div class="">
-<!--        template hetkel-->
-
-
+    <template #body>
         <table class="table">
           <thead>
           <tr>
@@ -45,10 +41,6 @@
           </tbody>
         </table>
         <div class="padding-10"></div>
-      </div>
-    </template>
-    <template>
-      <btn @click="closeModal">APLAUS</btn>
     </template>
   </Modal>
 </template>
