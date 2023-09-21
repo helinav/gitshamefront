@@ -1,11 +1,9 @@
 <template>
-  <Modal close-button-name="OK" ref="modalRef">
+  <Modal close-button-name="APLAUS" ref="modalRef">
     <template #header>
-      <h class="h-black">PARIMAD MÄNGIJAD!</h>
+      <h class="h-black">Parimad mängijad!</h>
     </template>
-    <template #body class="p-modal-long-text">
-      <div class="">
-<!--        template hetkel-->
+    <template #body>
         <table class="table">
           <thead>
           <tr>
@@ -16,37 +14,33 @@
           </thead>
           <tbody>
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">1st</th>
             <td>helina</td>
             <td>500</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
+            <th scope="row">2st</th>
             <td>rasmus</td>
             <td>400</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
+            <th scope="row">3st</th>
             <td>kristo</td>
             <td>300</td>
           </tr>
           <tr>
-            <th scope="row">4</th>
+            <th scope="row">4st</th>
             <td>...</td>
             <td>...</td>
           </tr>
           <tr>
-            <th scope="row">5</th>
+            <th scope="row">5st</th>
             <td>...</td>
             <td>...</td>
           </tr>
           </tbody>
         </table>
         <div class="padding-10"></div>
-      </div>
-    </template>
-    <template>
-      <btn @click="closeModal">APLAUS</btn>
     </template>
   </Modal>
 </template>
@@ -66,7 +60,6 @@ export default {
       this.$refs.modalRef.closeModal()
     },
   }
-
 
 }
 </script>
