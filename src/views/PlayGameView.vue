@@ -9,7 +9,8 @@
       </div>
     </div>
 
-    <AnswersCheckbox ref="answersCheckboxRef" @activate-show-answer-explanation="showAnswerExplanation"/>
+    <AnswersCheckbox ref="answersCheckboxRef"/>
+
 
     <AnswersTextbox ref="answersTextboxRef"/>
 
@@ -105,9 +106,6 @@ export default {
       })
     },
 
-    showAnswerExplanation(answerExplanation) {
-      this.questionInfo.answerExplanation = answerExplanation
-    },
 
   },
 

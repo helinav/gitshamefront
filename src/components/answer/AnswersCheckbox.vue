@@ -25,6 +25,7 @@
 <script>
 
 import {useRoute} from "vue-router";
+import {computed} from "vue";
 
 export default {
   name: 'AnswersCheckbox',
@@ -51,6 +52,12 @@ export default {
       }
     }
   },
+  computed: {
+    selectedMultipleChoiceAnswers() {
+      return this.answers.filter(answer => answer.isSelected)
+    },
+  },
+
   methods: {
     sendGetPossibleAnswersMultipleChoiceRequest(questionId) {
       this.$http.get("/possible-answers/multiple-choice", {
@@ -66,19 +73,16 @@ export default {
       })
     },
 
-    activateShowAnswerExplanation() {
-      this.$emit('activate-show-answer-explanation')
-    },
+
 
     updateMultipleChoiceAnswerInfo() {
-      this.$http.patch("answer/multiple-choice", this.multipleChoiceAnswerInfo, {
+      this.$http.patch("answer/multiple-choice", this.selectedMultipleChoiceAnswers, {
             params: {
               playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
         this.answerResponse.isCorrect = response.data
-        this.activateShowAnswerExplanation()
       }).catch(error => {
         // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
