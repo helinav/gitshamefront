@@ -86,6 +86,7 @@ export default {
             }
           }
       ).then(response => {
+        this.$emit('answer-submitted')
         this.answerResponse = response.data
         this.notAnsweredYet = true
         this.$emit('status-of-competition', this.answerResponse);

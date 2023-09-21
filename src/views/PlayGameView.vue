@@ -7,6 +7,7 @@
       <h5>Sinu skoor:{{ answerResponse.score }}</h5>
       <button @click="$router.push({name:'playRoute'})">Tagasi mängu valima</button>
     </div>
+    <div v-if="timeLeft > 0">Time left: {{ timeLeft }}s</div>
     <div>
       <div>
         <h4>{{ questionInfo.questionText }}</h4>
@@ -16,7 +17,7 @@
     </div>
     <div v-show="questionInfo.typeName==='radio' || questionInfo.typeName==='checkbox'">
       <AnswersCheckbox ref="answersCheckboxRef" @status-of-competition="syncOfDataResponse"
-                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
+                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest" @answer-submitted="clearTimer"/>
     </div>
     <div v-show="questionInfo.typeName==='textbox'">
       <AnswersTextbox ref="answersTextboxRef" @status-of-competition="syncOfDataResponse"
@@ -58,6 +59,8 @@ export default {
 
   data() {
     return {
+      timeLeft: 60,
+      timerId: null,
       playerGameId: Number(useRoute().query.playerGameId),
       answerId: 0,
       questionInfo: {
@@ -86,6 +89,17 @@ export default {
     },
 
   methods: {
+    startTimer() {
+      this.timeLeft = 60;
+      this.clearTimer();
+      this.timerId = setInterval(() => {
+        if (this.timeLeft > 0) this.timeLeft--;
+        else this.clearTimer();
+      }, 1000);
+    },
+    clearTimer() {
+      if (this.timerId) clearInterval(this.timerId);
+    },
     openModal() {
       this.$refs.shameGameOpenModalRef.$refs.modalRef.openModal()
     },
@@ -99,6 +113,7 @@ export default {
             }
           }
       ).then(response => {
+        this.startTimer()
         this.questionInfo = response.data
         if (this.questionInfo.isGameOver) {
           // todo: mis siis kui mäng on läbi
