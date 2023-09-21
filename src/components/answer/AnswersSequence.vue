@@ -6,7 +6,10 @@
         <div>
           <h1>Pane õigesse järjekorda</h1>
           <ul class="list-group" id="sortable-list">
-            <li class="list-group-item">{{ answer.text }}</li>
+            <li class="list-group-item">
+            <input type="number" v-model="answer.sequence" min="1">
+            {{ answer.text }}
+            </li>
           </ul>
         </div>
       </div>
@@ -40,8 +43,8 @@ export default {
 
   methods: {
 
-    sendGetAnswersSequenceRequest(questionId) {
-      this.$http.get("/answers/sequence", {
+    sendGetPossibleAnswersSequenceRequest(questionId) {
+      this.$http.get("/possible-answers/sequence", {
             params: {
               questionId: questionId
             }

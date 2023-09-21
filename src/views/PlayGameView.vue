@@ -16,9 +16,14 @@
     <AnswersSequence ref="answersSequenceRef"/>
 
     <div class="row mt-5">
-      <div class="col">PROGRESSIRIBA {{ questionInfo.questionNumber }} / {{ questionInfo.totalNumberOfQuestions }}</div>
+<!--      <div class="col">PROGRESSIRIBA {{ questionInfo.questionNumber }} / {{ questionInfo.totalNumberOfQuestions }}</div>-->
       <!--      <div v-if="" class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
     </div>
+
+    <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-success" style="width: 10%">Progress: {{ questionInfo.questionNumber }} / {{ questionInfo.totalNumberOfQuestions }}</div>
+    </div>
+
 
 
   </div>
@@ -73,11 +78,11 @@ export default {
           switch (questionAnswerType) {
             case 'checkbox':
               this.$refs.answersCheckboxRef.playerGameId = this.playerGameId
-              this.$refs.answersCheckboxRef.sendGetAnswersSelectRequest(this.questionInfo.questionId)
+              this.$refs.answersCheckboxRef.sendGetPossibleAnswersMultipleChoiceRequest(this.questionInfo.questionId)
               break
 
             case 'radio':
-              this.$refs.answersCheckboxRef.sendGetAnswersSelectRequest(this.questionInfo.questionId)
+              this.$refs.answersCheckboxRef.sendGetPossibleAnswersMultipleChoiceRequest(this.questionInfo.questionId)
               break
 
             case 'textbox':
@@ -87,30 +92,13 @@ export default {
 
             case 'sequence':
               this.$refs.answersSequenceRef.playerGameId = this.playerGameId
-              this.$refs.answersSequenceRef.sendGetAnswersSequenceRequest(this.questionInfo.questionId)
+              this.$refs.answersSequenceRef.sendGetPossibleAnswersSequenceRequest(this.questionInfo.questionId)
               break
 
           }
         }
       }).catch(error => {
         router.push({name: 'errorRoute'})
-      })
-    },
-
-    // todo: alumine meetod korda, kui backist tuleb teenus
-
-    sendGameAnswerInfo() {
-      this.$http.patch("/game-answer", {
-            params: {
-              playerGameId: this.playerGameId,
-              answerId: this.answerId
-            }
-          }
-      ).then(response => {
-        const responseBody = response.data
-      }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
-        const errorResponseBody = error.response.data
       })
     },
 

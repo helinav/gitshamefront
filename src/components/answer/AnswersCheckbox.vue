@@ -40,8 +40,8 @@ export default {
     }
   },
   methods: {
-    sendGetAnswersSelectRequest(questionId) {
-      this.$http.get("/answers/select", {
+    sendGetPossibleAnswersMultipleChoiceRequest(questionId) {
+      this.$http.get("/possible-answers/multiple-choice", {
             params: {
               questionId: questionId
             }
