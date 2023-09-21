@@ -35,6 +35,9 @@ export default {
       textBoxAnswerInfo: {
         answerId: 0,
         text: ''
+      },
+      answerResponse: {
+        isCorrect: false
       }
     }
   },

@@ -16,7 +16,7 @@
 
     <div class="row mt-5">
       <div class="col">
-        <button @click="updateMultipleChoiceAnswerInfo" type="button" class="btn btn-primary">Vasta</button>
+        <button @click="updateMultipleChoiceAnswerInfo">Vasta</button>
       </div>
     </div>
 
@@ -25,7 +25,6 @@
 <script>
 
 import {useRoute} from "vue-router";
-import {computed} from "vue";
 
 export default {
   name: 'AnswersCheckbox',
@@ -49,7 +48,7 @@ export default {
       ],
       answerResponse: {
         isCorrect: false
-      }
+      },
     }
   },
   computed: {
@@ -72,8 +71,6 @@ export default {
         const errorResponseBody = error.response.data
       })
     },
-
-
 
     updateMultipleChoiceAnswerInfo() {
       this.$http.patch("answer/multiple-choice", this.selectedMultipleChoiceAnswers, {

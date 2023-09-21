@@ -47,8 +47,17 @@ export default {
           sequence: 0,
           isSelected: false
         }
-      ]
+      ],
+      answerResponse: {
+        isCorrect: false
+      }
     }
+  },
+
+  computed: {
+    chosenSequenceTypeAnswers() {
+      return this.answers.filter(answer => answer.isSelected)
+    },
   },
 
   methods: {
@@ -63,22 +72,19 @@ export default {
         this.answers = response.data
         this.showAnswers = true
       }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },
 
     updateSequenceTypeAnswerInfo() {
-      this.$http.patch("/answer/sequence", this.sequenceTypeAnswerInfo, {
+      this.$http.patch("/answer/sequence", this.chosenSequenceTypeAnswers, {
             params: {
               playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
-        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
-        const responseBody = response.data
+       this.answerResponse.isCorrect = response.data
       }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },

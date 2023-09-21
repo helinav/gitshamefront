@@ -42,7 +42,6 @@
                placeholder="example@example.com" id="exampleInputEmail1"
                aria-describedby="emailHelp">
         <div class="padding-10"></div>
-        <!--        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
       </div>
     </form>
     <btn @click="addAccount" type="">Loo kasutaja</btn>

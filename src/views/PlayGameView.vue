@@ -11,13 +11,13 @@
 
     <AnswersCheckbox ref="answersCheckboxRef"/>
 
-
     <AnswersTextbox ref="answersTextboxRef"/>
 
     <AnswersSequence ref="answersSequenceRef"/>
 
     <div class="row mt-5">
-      <!--      <div v-if="" class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
+<!--      <div class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
+      <button @click="sendQuestionInfoRequest">Järgmine küsimus</button>
     </div>
 
     <div class="row mt-5">
@@ -28,8 +28,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 <script>
@@ -60,7 +58,6 @@ export default {
         totalNumberOfQuestions: 0,
         isGameOver: true
       },
-
     }
   },
 
@@ -101,11 +98,11 @@ export default {
 
           }
         }
+
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
     },
-
 
   },
 
