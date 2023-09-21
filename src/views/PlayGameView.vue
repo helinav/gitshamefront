@@ -87,7 +87,7 @@ export default {
 
             case 'textbox':
               this.$refs.answersCheckboxRef.playerGameId = this.playerGameId
-              this.$refs.answersTextboxRef.sendGetPossibleAnswersTextboxRequest(this.questionInfo.questionId)
+              this.$refs.answersTextboxRef.sendGetPossibleAnswerTextboxRequest(this.questionInfo.questionId)
               break
 
             case 'sequence':

@@ -34,7 +34,7 @@ export default {
   },
   methods: {
 
-    sendGetPossibleAnswersTextboxRequest(questionId) {
+    sendGetPossibleAnswerTextboxRequest(questionId) {
       this.$http.get("/possible-answer/textbox", {
             params: {
               questionId: questionId
