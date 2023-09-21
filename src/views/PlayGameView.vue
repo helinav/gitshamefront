@@ -4,8 +4,8 @@
   </div>
   <div v-show="questionInfo.strikeCount < 3">
     <div v-if="questionInfo.isGameOver = true">
-      <h5>Sinu skoor:{{ answerResponse.score }}</h5>
       <button @click="$router.push({name:'playRoute'})">Tagasi mängu valima</button>
+      <h5>Sinu skoor:{{ answerResponse.score }}</h5>
     </div>
     <div v-if="timeLeft > 0">Time left: {{ timeLeft }}s</div>
     <div>
