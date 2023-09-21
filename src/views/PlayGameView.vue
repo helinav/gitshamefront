@@ -59,6 +59,17 @@ export default {
           }
       ).then(response => {
         this.questionInfo = response.data
+        const queryParameters = {
+          questionId: this.questionInfo.questionId,
+          questionText: this.questionInfo.questionText,
+          answerExplanation: this.questionInfo.answerExplanation,
+          typeName: this.questionInfo.typeName,
+          imageData: this.questionInfo.imageData,
+          strikeCount: this.questionInfo.strikeCount,
+          questionNumber: this.questionInfo.questionNumber,
+          totalNumberOfQuestions: this.questionInfo.totalNumberOfQuestions,
+        }
+        router.push({query: queryParameters})
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })

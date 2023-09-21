@@ -67,16 +67,7 @@ export default {
         errorCode: 0
       },
       playerGameId: 0,
-      questionInfo: {
-        questionId: 0,
-        questionText: '',
-        answerExplanation: '',
-        typeName: '',
-        imageData: '',
-        strikeCount: 0,
-        questionNumber: 0,
-        totalNumberOfQuestions: 0
-      }
+
     }
   },
   methods: {
