@@ -10,6 +10,13 @@
         </div>
       </div>
     </div>
+
+    <div class="row mt-5">
+      <div class="col">
+        <button @click="sendAnswerRequest" type="button" class="btn btn-primary">Vasta</button>
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -39,6 +46,20 @@ export default {
         this.answers = response.data
         this.showAnswers = true
       }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+
+    sendAnswerRequest() {
+      this.$http.post("/some/path", this.answers, {
+            params: {
+              playerGameId: this.playerGameId
+            }
+          }
+      ).then(response => {
+        const responseBody = response.data
+      }).catch(error => {
+        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },

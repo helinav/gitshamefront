@@ -13,26 +13,26 @@
     </div>
     <div class="form-label">
       <div class="padding-17"></div>
-      <btn v-if="!isAdmin" @click="startPlayerGame" class="btn-red" type="button">Mängi</btn>
+      <button v-if="!isAdmin" @click="startPlayerGame" class="btn-red" type="button">Mängi</button>
     </div>
     <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'gameRoute'})">
-      <btn class="corner-button">Lisa uus mäng</btn>
+      <button class="corner-button">Lisa uus mäng</button>
     </div>
     <div v-if="isAdmin" class="button-container" @click="">
-      <btn class="corner-button">Muuda mängu</btn>
+      <button class="corner-button">Muuda mängu</button>
     </div>
     <div v-if="isAdmin" class="button-container" @click="$router.push({name: 'avatarRoute'})">
-      <btn class="corner-button">Lisa avatar</btn>
+      <button class="corner-button">Lisa avatar</button>
     </div>
 
     <div class="row justify-content-center" v-if="!isAdmin">
       <div class="d-flex justify-content-center">
         <div class="form-label">
-          <btn class="btn-gold" @click="openModal('leaderboard')">Autahvel</btn>
+          <button class="btn-gold" @click="openModal('leaderboard')">Autahvel</button>
           <LeaderboardModal ref="leaderboardModalRef"></LeaderboardModal>
         </div>
         <div class="form-label">
-          <btn @click="openModal('rules')">Reeglid</btn>
+          <button @click="openModal('rules')">Reeglid</button>
           <RulesModal ref="rulesModalRef"></RulesModal>
         </div>
       </div>
@@ -49,7 +49,6 @@ import LeaderboardModal from "@/components/modal/LeaderboardModal.vue";
 import GamesDropdown from "@/components/GamesDropdown.vue";
 import {CHOOSE_A_GAME} from "@/assets/script/AlertMessage";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
-import {useRoute} from "vue-router";
 
 export default {
   name: "PlayView",

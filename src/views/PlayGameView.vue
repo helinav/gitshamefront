@@ -21,12 +21,6 @@
     </div>
 
 
-    <div class="row mt-5">
-      <div class="col">
-        <button @click="sendAnswerRequest" type="button" class="btn btn-primary">Vasta</button>
-      </div>
-    </div>
-
   </div>
 </template>
 <script>
@@ -104,20 +98,6 @@ export default {
     },
 
     // todo: alumine meetod korda, kui backist tuleb teenus
-    sendAnswerRequest() {
-      this.$http.post("/some/path", this.answers, {
-            params: {
-              playerGameId: this.playerGameId
-            }
-          }
-      ).then(response => {
-        const responseBody = response.data
-        this.sendGameAnswerInfo()
-      }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
-        const errorResponseBody = error.response.data
-      })
-    },
 
     sendGameAnswerInfo() {
       this.$http.patch("/game-answer", {
