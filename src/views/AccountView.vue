@@ -56,7 +56,7 @@ import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 import {EMAIL_ALREADY_EXISTS, USERNAME_ALREADY_EXISTS} from "@/assets/script/ErrorCode";
 import {ACCOUNT_ADDED, FILL_MANDATORY_FIELDS} from "@/assets/script/AlertMessage";
-import AvatarImage from "@/components/AvatarImage.vue";
+import AvatarImage from "@/components/image/AvatarImage.vue";
 
 export default {
   components: {AvatarImage, AlertDanger, AlertSuccess},

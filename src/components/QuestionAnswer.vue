@@ -85,15 +85,15 @@ export default {
 
   methods: {
 
-    showQuestionAnswers() {
-      if (this.questionInfo.typeName === 'radio' || this.questionInfo.typeName === 'checkbox') {
-        this.newSelectAnswer()
-      } else if (this.questionInfo.typeName === 'textbox') {
-        this.newTextBoxAnswer();
-      } else {
-        this.newSequenceAnswer()
-      }
-    },
+    // showQuestionAnswers() {
+    //   if (this.questionInfo.typeName === 'radio' || this.questionInfo.typeName === 'checkbox') {
+    //     this.newSelectAnswer()
+    //   } else if (this.questionInfo.typeName === 'textbox') {
+    //     this.newTextBoxAnswer();
+    //   } else {
+    //     this.newSequenceAnswer()
+    //   }
+    // },
 
     newSelectAnswer() {
       this.$http.get("/answers/select", {
@@ -137,7 +137,7 @@ export default {
   },
 
   mounted() {
-    this.showQuestionAnswers()
+    // this.showQuestionAnswers()
   }
 }
 </script>

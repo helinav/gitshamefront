@@ -17,7 +17,7 @@
 
 <script>
 import {defineComponent} from "vue";
-import ImageInput from "@/components/ImageInput.vue";
+import ImageInput from "@/components/image/ImageInput.vue";
 import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 import {AVATAR_ADDED} from "@/assets/script/AlertMessage";
 import CornerButton from "@/components/button/CornerButton.vue";
