@@ -1,9 +1,6 @@
 <template>
   <div v-show="questionInfo.strikeCount > 2">
-    Mäng on läbi, kogusid kolm GitBlame'i ja said GitShame'i :(
-    <div>Sinu skoor:{{ answerResponse.score }}</div>
-    <button @click="$router.push({name:'playRoute'})">Tagasi mängu valima</button>
-
+    <ShameGameOverModal ref="shameGameOpenModalRef"></ShameGameOverModal>
   </div>
   <div v-show="questionInfo.strikeCount < 3">
     <div v-if="questionInfo.isGameOver = true">
@@ -48,6 +45,7 @@ import QuestionImage from "@/components/image/QuestionImage.vue";
 import AnswersCheckbox from "@/components/answer/AnswersCheckbox.vue";
 import AnswersTextbox from "@/components/answer/AnswersTextbox.vue";
 import AnswersSequence from "@/components/answer/AnswersSequence.vue";
+import ShameGameOverModal from "@/components/modal/ShameGameOverModal.vue";
 
 export default {
   name: "PlayGameView",
@@ -56,7 +54,7 @@ export default {
       return routerKey
     }
   },
-  components: {AnswersSequence, AnswersTextbox, AnswersCheckbox, QuestionImage},
+  components: {ShameGameOverModal, AnswersSequence, AnswersTextbox, AnswersCheckbox, QuestionImage},
 
   data() {
     return {
@@ -79,8 +77,18 @@ export default {
       },
     }
   },
+  watch: {
+    'questionInfo.strikeCount'(newVal) {
+      if (newVal > 2) {
+        this.openModal();
+      }
+    }
+    },
 
   methods: {
+    openModal() {
+      this.$refs.shameGameOpenModalRef.$refs.modalRef.openModal()
+    },
     syncOfDataResponse(response) {
       this.answerResponse = response;
     },
