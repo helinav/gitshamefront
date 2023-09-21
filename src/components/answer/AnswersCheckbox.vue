@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-
     <div class="row mt-5">
       <div v-show="notAnsweredYet">
         {{questionInfo.answerExplanation}}
@@ -23,10 +22,7 @@
         <button @click="updateMultipleChoiceAnswerInfo">Vasta</button>
       </div>
     </div>
-
   </div>
-
-
 </template>
 <script>
 

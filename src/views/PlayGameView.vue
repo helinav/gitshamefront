@@ -1,33 +1,35 @@
 <template>
   <div v-show="questionInfo.strikeCount > 2">
-    You screwed.
-    {{answerResponse.score}}
+    Mäng on läbi, kogusid kolm GitBlame'i ja said GitShame'i :(
+    <div>Sinu skoor:{{ answerResponse.score }}</div>
+    <button @click="$router.push({name:'playRoute'})">Tagasi mängu valima</button>
+
   </div>
   <div v-show="questionInfo.strikeCount < 3">
-    <div>
-      {{answerResponse.score}}
+    <div v-if="questionInfo.isGameOver = true">
+      <h5>Sinu skoor:{{ answerResponse.score }}</h5>
+      <button @click="$router.push({name:'playRoute'})">Tagasi mängu valima</button>
     </div>
     <div>
       <div>
         <h4>{{ questionInfo.questionText }}</h4>
-        <h5>Strike count: {{ questionInfo.strikeCount }}</h5>
+        <h5>GitBlame: {{ questionInfo.strikeCount }}</h5>
         <QuestionImage :image-data-base64="questionInfo.imageData"/>
       </div>
     </div>
     <div v-show="questionInfo.typeName==='radio' || questionInfo.typeName==='checkbox'">
-      <AnswersCheckbox ref="answersCheckboxRef" @status-of-competition="syncOfDataResponse" :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
+      <AnswersCheckbox ref="answersCheckboxRef" @status-of-competition="syncOfDataResponse"
+                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
     </div>
     <div v-show="questionInfo.typeName==='textbox'">
-      <AnswersTextbox ref="answersTextboxRef" @status-of-competition="syncOfDataResponse" :type-name="questionInfo.typeName" :question-info="questionInfo"
+      <AnswersTextbox ref="answersTextboxRef" @status-of-competition="syncOfDataResponse"
+                      :type-name="questionInfo.typeName" :question-info="questionInfo"
                       @next-question="sendQuestionInfoRequest"/>
     </div>
     <div v-show="questionInfo.typeName==='sequence'">
-      <AnswersSequence ref="answersSequenceRef" @status-of-competition="syncOfDataResponse" :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
+      <AnswersSequence ref="answersSequenceRef" @status-of-competition="syncOfDataResponse"
+                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
     </div>
-    <!--    <div class="row mt-5">-->
-    <!--      <div class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
-    <!--      <button @click="sendQuestionInfoRequest">Järgmine küsimus</button>-->
-    <!--    </div>-->
     <div class="row mt-5">
       <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10"
            aria-valuemin="0" aria-valuemax="100">
@@ -41,7 +43,7 @@
 <script>
 
 import router from "@/router";
-import {useRoute} from "vue-router";
+import {routerKey, useRoute} from "vue-router";
 import QuestionImage from "@/components/image/QuestionImage.vue";
 import AnswersCheckbox from "@/components/answer/AnswersCheckbox.vue";
 import AnswersTextbox from "@/components/answer/AnswersTextbox.vue";
@@ -49,6 +51,11 @@ import AnswersSequence from "@/components/answer/AnswersSequence.vue";
 
 export default {
   name: "PlayGameView",
+  computed: {
+    routerKey() {
+      return routerKey
+    }
+  },
   components: {AnswersSequence, AnswersTextbox, AnswersCheckbox, QuestionImage},
 
   data() {
@@ -74,7 +81,7 @@ export default {
   },
 
   methods: {
-    syncOfDataResponse(response){
+    syncOfDataResponse(response) {
       this.answerResponse = response;
     },
     sendQuestionInfoRequest() {
@@ -87,6 +94,7 @@ export default {
         this.questionInfo = response.data
         if (this.questionInfo.isGameOver) {
           // todo: mis siis kui mäng on läbi
+          this.isGameOver = true
 
         } else {
           let questionAnswerType = this.questionInfo.typeName;

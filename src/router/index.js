@@ -48,7 +48,7 @@ const routes = [
     path: '/play-game',
     name: 'playGameRoute',
     component: PlayGameView
-  }
+  },
 ]
 
 const router = createRouter({
