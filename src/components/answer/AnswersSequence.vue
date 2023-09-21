@@ -24,13 +24,23 @@
   </div>
 </template>
 <script>
+import {useRoute} from "vue-router";
+
 export default {
   name: 'AnswersSequence',
   data() {
     return {
-      playerGameId: 0,
+      playerGameId: Number(useRoute().query.playerGameId),
       showAnswers: false,
       answers: [
+        {
+          answerId: 0,
+          text: '',
+          sequence: 0,
+          isSelected: false
+        }
+      ],
+      sequenceTypeAnswerInfo:[
         {
           answerId: 0,
           text: '',
@@ -59,7 +69,7 @@ export default {
     },
 
     updateSequenceTypeAnswerInfo() {
-      this.$http.patch("/answer/sequence", this.answers, {
+      this.$http.patch("/answer/sequence", this.sequenceTypeAnswerInfo, {
             params: {
               playerGameId: this.playerGameId,
             }

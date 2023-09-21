@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <AnswersCheckbox ref="answersCheckboxRef"/>
+    <AnswersCheckbox ref="answersCheckboxRef" @activate-show-answer-explanation="showAnswerExplanation"/>
 
     <AnswersTextbox ref="answersTextboxRef"/>
 
@@ -103,6 +103,10 @@ export default {
       }).catch(error => {
         router.push({name: 'errorRoute'})
       })
+    },
+
+    showAnswerExplanation(answerExplanation) {
+      this.questionInfo.answerExplanation = answerExplanation
     },
 
   },

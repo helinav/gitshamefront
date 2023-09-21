@@ -20,13 +20,19 @@
   </div>
 </template>
 <script>
+import {useRoute} from "vue-router";
+
 export default {
   name: 'AnswersTextbox',
   data() {
     return {
       showAnswers: false,
-      playerGameId: 0,
+      playerGameId: Number(useRoute().query.playerGameId),
       answer: {
+        answerId: 0,
+        text: ''
+      },
+      textBoxAnswerInfo: {
         answerId: 0,
         text: ''
       }
@@ -49,7 +55,7 @@ export default {
     },
 
     updateAnswerSequenceInfo() {
-      this.$http.post("/answer-textbox", this.answer, {
+      this.$http.post("/answer-textbox", this.textBoxAnswerInfo, {
             params: {
               playerGameId: this.playerGameId,
             }

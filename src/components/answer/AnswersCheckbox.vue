@@ -24,12 +24,14 @@
 </template>
 <script>
 
+import {useRoute} from "vue-router";
+
 export default {
   name: 'AnswersCheckbox',
   data() {
     return {
       showAnswers: false,
-      playerGameId: 0,
+      playerGameId: Number(useRoute().query.playerGameId),
       answers: [
         {
           answerId: 0,
@@ -37,7 +39,16 @@ export default {
           isSelected: false
         }
       ],
-
+      multipleChoiceAnswerInfo: [
+        {
+          answerId: 0,
+          text: '',
+          isSelected: false
+        }
+      ],
+      answerResponse: {
+        isCorrect: false
+      }
     }
   },
   methods: {
@@ -55,14 +66,19 @@ export default {
       })
     },
 
+    activateShowAnswerExplanation() {
+      this.$emit('activate-show-answer-explanation')
+    },
+
     updateMultipleChoiceAnswerInfo() {
-      this.$http.patch("answer/multiple-choice", this.answers, {
+      this.$http.patch("answer/multiple-choice", this.multipleChoiceAnswerInfo, {
             params: {
               playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.answerResponse.isCorrect = response.data
+        this.activateShowAnswerExplanation()
       }).catch(error => {
         // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
