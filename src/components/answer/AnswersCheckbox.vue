@@ -16,7 +16,7 @@
 
     <div class="row mt-5">
       <div class="col">
-        <button @click="sendAnswerRequest" type="button" class="btn btn-primary">Vasta</button>
+        <button @click="updateMultipleChoiceAnswerInfo" type="button" class="btn btn-primary">Vasta</button>
       </div>
     </div>
 
@@ -36,7 +36,8 @@ export default {
           text: '',
           isSelected: false
         }
-      ]
+      ],
+
     }
   },
   methods: {
@@ -50,15 +51,14 @@ export default {
         this.answers = response.data
         this.showAnswers = true
       }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },
 
-    sendAnswerRequest() {
-      this.$http.post("/some/path", this.answers, {
+    updateMultipleChoiceAnswerInfo() {
+      this.$http.patch("answer/multiple-choice", this.answers, {
             params: {
-              playerGameId: this.playerGameId
+              playerGameId: this.playerGameId,
             }
           }
       ).then(response => {

@@ -13,7 +13,7 @@
 
     <div class="row mt-5">
       <div class="col">
-        <button @click="sendAnswerRequest" type="button" class="btn btn-primary">Vasta</button>
+        <button @click="updateAnswerSequenceInfo" type="button" class="btn btn-primary">Vasta</button>
       </div>
     </div>
 
@@ -41,20 +41,21 @@ export default {
             }
           }
       ).then(response => {
-        this.answers = response.data
+        this.answer = response.data
 
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
     },
 
-    sendAnswerRequest() {
-      this.$http.post("/some/path", this.answers, {
+    updateAnswerSequenceInfo() {
+      this.$http.post("/answer-textbox", this.answer, {
             params: {
-              playerGameId: this.playerGameId
+              playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
+        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
         const responseBody = response.data
       }).catch(error => {
         // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓

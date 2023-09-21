@@ -16,14 +16,17 @@
     <AnswersSequence ref="answersSequenceRef"/>
 
     <div class="row mt-5">
-<!--      <div class="col">PROGRESSIRIBA {{ questionInfo.questionNumber }} / {{ questionInfo.totalNumberOfQuestions }}</div>-->
       <!--      <div v-if="" class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
     </div>
 
-    <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress-bar bg-success" style="width: 10%">Progress: {{ questionInfo.questionNumber }} / {{ questionInfo.totalNumberOfQuestions }}</div>
+    <div class="row mt-5">
+      <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10"
+           aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar bg-success">Progress: {{ questionInfo.questionNumber }} /
+          {{ questionInfo.totalNumberOfQuestions }}
+        </div>
+      </div>
     </div>
-
 
 
   </div>
