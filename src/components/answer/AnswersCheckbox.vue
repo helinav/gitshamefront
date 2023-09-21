@@ -15,12 +15,18 @@
     </div>
 
     <div class="row mt-5">
-      <div class="col">
+      <div v-show="notAnsweredYet">
+        {{questionInfo.answerExplanation}}
+        <button @click="nextQuestion">Next One</button>
+      </div>
+      <div class="col" v-show="!notAnsweredYet">
         <button @click="updateMultipleChoiceAnswerInfo">Vasta</button>
       </div>
     </div>
 
   </div>
+
+
 </template>
 <script>
 
@@ -47,16 +53,21 @@ export default {
         }
       ],
       answerResponse: {
-        isCorrect: false
+        isCorrect: false,
+        score: 0
       },
+      notAnsweredYet: false,
     }
+  },
+  props: {
+    questionInfo: Object,
   },
   computed: {
     selectedMultipleChoiceAnswers() {
+      console.log("computed");
       return this.answers.filter(answer => answer.isSelected)
     },
   },
-
   methods: {
     sendGetPossibleAnswersMultipleChoiceRequest(questionId) {
       this.$http.get("/possible-answers/multiple-choice", {
@@ -79,13 +90,18 @@ export default {
             }
           }
       ).then(response => {
-        this.answerResponse.isCorrect = response.data
+        this.answerResponse = response.data
+        this.notAnsweredYet = true
+        this.$emit('status-of-competition', this.answerResponse);
       }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },
 
+    nextQuestion() {
+      this.$emit('next-question');
+      this.notAnsweredYet = false;
+    },
 
   },
 }

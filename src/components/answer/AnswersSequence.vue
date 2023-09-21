@@ -16,7 +16,11 @@
     </div>
 
     <div class="row mt-5">
-      <div class="col">
+      <div v-show="notAnsweredYet">
+        {{questionInfo.answerExplanation}}
+        <button @click="nextQuestion">Next One</button>
+      </div>
+      <div class="col" v-show="!notAnsweredYet">
         <button @click="updateSequenceTypeAnswerInfo" type="button" class="btn btn-primary">Vasta</button>
       </div>
     </div>
@@ -49,44 +53,63 @@ export default {
         }
       ],
       answerResponse: {
-        isCorrect: false
-      }
+        isCorrect: false,
+        score: 0
+      },
+      notAnsweredYet: false,
     }
   },
-
-  computed: {
-    chosenSequenceTypeAnswers() {
-      return this.answers.filter(answer => answer.isSelected)
-    },
+  props: {
+    questionInfo: Object,
   },
-
   methods: {
-
     sendGetPossibleAnswersSequenceRequest(questionId) {
+      console.log("sendGetPossibleAnswersSequenceRequest before");
+
       this.$http.get("/possible-answers/sequence", {
             params: {
               questionId: questionId
             }
           }
       ).then(response => {
+        console.log("sendGetPossibleAnswersSequenceRequest response before");
         this.answers = response.data
         this.showAnswers = true
+        console.log("sendGetPossibleAnswersSequenceRequest response after");
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
+      console.log("sendGetPossibleAnswersSequenceRequest after");
     },
 
     updateSequenceTypeAnswerInfo() {
-      this.$http.patch("/answer/sequence", this.chosenSequenceTypeAnswers, {
+      console.log("updateSequenceTypeAnswerInfo before");
+      console.log("answers | ", this.answers);
+      this.$http.patch("/answer/sequence", this.answers,{
             params: {
               playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
-       this.answerResponse.isCorrect = response.data
+        console.log("updateSequenceTypeAnswerInfo response");
+
+        this.answerResponse = response.data
+        this.notAnsweredYet = true
+        this.$emit('status-of-competition', this.answerResponse);
+
       }).catch(error => {
+        console.log("updateSequenceTypeAnswerInfo error");
+
         const errorResponseBody = error.response.data
       })
+      console.log("updateSequenceTypeAnswerInfo after");
+
+
+    },
+    nextQuestion() {
+      this.$emit('next-question');
+      this.notAnsweredYet = false;
     },
 
   }

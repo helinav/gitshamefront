@@ -1,22 +1,24 @@
 <template>
-  <div v-if="showAnswers">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col">
-          <div class="form-floating">
-            <textarea v-model="answer.text" class="form-control" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Kirjuta vastus</label>
-          </div>
-        </div>
+  <div v-if="typeName === 'textbox'">
+    <div class="form-text justify-content-center">
+      <div class="input-group">
+        <input
+            type="text"
+            id="text-input"
+            v-model="textInput"
+        >
       </div>
     </div>
 
     <div class="row mt-5">
-      <div class="col">
-        <button @click="updateAnswerSequenceInfo" type="button" class="btn btn-primary">Vasta</button>
+      <div v-show="notAnsweredYet">
+        {{questionInfo.answerExplanation}}
+        <button @click="nextQuestion">Next One</button>
+      </div>
+      <div class="col" v-show="!notAnsweredYet">
+        <button @click="updateAnswerTextboxInfo" type="button" class="btn btn-primary">Vasta</button>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -24,8 +26,13 @@ import {useRoute} from "vue-router";
 
 export default {
   name: 'AnswersTextbox',
+  props: {
+      typeName: String,
+      questionInfo: Object,
+  },
   data() {
     return {
+      textInput: '',
       showAnswers: false,
       playerGameId: Number(useRoute().query.playerGameId),
       answer: {
@@ -37,8 +44,10 @@ export default {
         text: ''
       },
       answerResponse: {
-        isCorrect: false
-      }
+        isCorrect: false,
+        score: 0
+      },
+      notAnsweredYet: false
     }
   },
   methods: {
@@ -51,27 +60,33 @@ export default {
           }
       ).then(response => {
         this.answer = response.data
-
+        this.textBoxAnswerInfo = response.data
+        console.log(response.data);
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
     },
 
-    updateAnswerSequenceInfo() {
-      this.$http.post("/answer-textbox", this.textBoxAnswerInfo, {
+    updateAnswerTextboxInfo() {
+      this.textBoxAnswerInfo.text = this.textInput;
+
+      this.$http.patch("/answer-textbox", this.textBoxAnswerInfo, {
             params: {
               playerGameId: this.playerGameId,
             }
           }
       ).then(response => {
-        // Siit saame kätte JSONi  ↓↓↓↓↓↓↓↓
-        const responseBody = response.data
+        this.answerResponse = response.data;
+        this.notAnsweredYet = true;
+        this.$emit('status-of-competition', this.answerResponse);
       }).catch(error => {
-        // Siit saame kätte errori JSONi  ↓↓↓↓↓↓↓↓
         const errorResponseBody = error.response.data
       })
     },
-
+    nextQuestion() {
+      this.$emit('next-question');
+      this.notAnsweredYet = false;
+    },
   }
 }
 </script>

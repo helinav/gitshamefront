@@ -1,25 +1,33 @@
 <template>
-  <div>
+  <div v-show="questionInfo.strikeCount > 2">
+    You screwed.
+    {{answerResponse.score}}
+  </div>
+  <div v-show="questionInfo.strikeCount < 3">
+    <div>
+      {{answerResponse.score}}
+    </div>
     <div>
       <div>
         <h4>{{ questionInfo.questionText }}</h4>
         <h5>Strike count: {{ questionInfo.strikeCount }}</h5>
         <QuestionImage :image-data-base64="questionInfo.imageData"/>
-        <div></div>
       </div>
     </div>
-
-    <AnswersCheckbox ref="answersCheckboxRef"/>
-
-    <AnswersTextbox ref="answersTextboxRef"/>
-
-    <AnswersSequence ref="answersSequenceRef"/>
-
-    <div class="row mt-5">
-<!--      <div class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
-      <button @click="sendQuestionInfoRequest">Järgmine küsimus</button>
+    <div v-show="questionInfo.typeName==='radio' || questionInfo.typeName==='checkbox'">
+      <AnswersCheckbox ref="answersCheckboxRef" @status-of-competition="syncOfDataResponse" :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
     </div>
-
+    <div v-show="questionInfo.typeName==='textbox'">
+      <AnswersTextbox ref="answersTextboxRef" @status-of-competition="syncOfDataResponse" :type-name="questionInfo.typeName" :question-info="questionInfo"
+                      @next-question="sendQuestionInfoRequest"/>
+    </div>
+    <div v-show="questionInfo.typeName==='sequence'">
+      <AnswersSequence ref="answersSequenceRef" @status-of-competition="syncOfDataResponse" :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
+    </div>
+    <!--    <div class="row mt-5">-->
+    <!--      <div class="col">ÕIGE VASTUSE SELGITUS: {{ questionInfo.answerExplanation }}</div>-->
+    <!--      <button @click="sendQuestionInfoRequest">Järgmine küsimus</button>-->
+    <!--    </div>-->
     <div class="row mt-5">
       <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10"
            aria-valuemin="0" aria-valuemax="100">
@@ -58,11 +66,17 @@ export default {
         totalNumberOfQuestions: 0,
         isGameOver: true
       },
+      answerResponse: {
+        isCorrect: false,
+        score: 0
+      },
     }
   },
 
   methods: {
-
+    syncOfDataResponse(response){
+      this.answerResponse = response;
+    },
     sendQuestionInfoRequest() {
       this.$http.get("/next-question", {
             params: {
