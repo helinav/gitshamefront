@@ -22,11 +22,11 @@
     <div v-show="questionInfo.typeName==='textbox'">
       <AnswersTextbox ref="answersTextboxRef" @status-of-competition="syncOfDataResponse"
                       :type-name="questionInfo.typeName" :question-info="questionInfo"
-                      @next-question="sendQuestionInfoRequest"/>
+                      @next-question="sendQuestionInfoRequest" @answer-submitted="clearTimer"/>
     </div>
     <div v-show="questionInfo.typeName==='sequence'">
       <AnswersSequence ref="answersSequenceRef" @status-of-competition="syncOfDataResponse"
-                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest"/>
+                       :question-info="questionInfo" @next-question="sendQuestionInfoRequest" @answer-submitted="clearTimer"/>
     </div>
     <div class="row mt-5">
       <div class="progress row mt-5" role="progressbar" aria-label="Success example" aria-valuenow="10"
